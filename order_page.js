@@ -1,4 +1,6 @@
 $(document).ready(function () {
+  removeBeakLines()
+
   $(".order-panel-D").on("click", function (event) {
     event.stopPropagation();
     event.stopImmediatePropagation();
@@ -22,3 +24,7 @@ $(document).ready(function () {
     parentE.toggleClass("d-none");
   });
 });
+
+function removeBeakLines() {
+  $("br").remove();
+}
