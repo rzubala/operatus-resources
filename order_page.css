@@ -82,3 +82,18 @@ td > a > div > div {
     /* background-color: aliceblue;
     height: 200vh; */
 }
+
+.overflow-panel {
+    height: 50vh;
+    overflow-y: hidden;
+}
+
+.panelC-show-more, .panelD-show-more, .panelE-show-more {
+    text-align: center;
+    color: rgb(80,80,80)
+}
+
+.panelC-show-less, .panelD-show-less, .panelE-show-less {
+    text-align: center;
+    color: rgb(80,80,80)
+}

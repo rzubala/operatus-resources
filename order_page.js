@@ -1,8 +1,38 @@
 $(document).ready(function () {
   removeBeakLines()
   registerExpandClick()
-  adjustCss();  
+  adjustCss();
+  showMore();
 });
+
+function showMore() {
+  $('.panelC-show-more').on('click', onShowMoreC);
+  $('.panelC-show-less').on('click', onShowMoreC);
+
+  $('.panelD-show-more').on('click', onShowMoreD);
+  $('.panelD-show-less').on('click', onShowMoreD);
+
+  $('.panelE-show-more').on('click', onShowMoreE);
+  $('.panelE-show-less').on('click', onShowMoreE);
+}
+
+function onShowMoreC() {
+  $('.order-panel-C > div.inner-panel').toggleClass("overflow-panel");
+  $('.panelC-show-more').toggleClass("d-none");
+  $('.panelC-show-less').toggleClass("d-none");
+}
+
+function onShowMoreD() {
+  $('.order-panel-D > div.inner-panel').toggleClass("overflow-panel");
+  $('.panelD-show-more').toggleClass("d-none");
+  $('.panelD-show-less').toggleClass("d-none");
+}
+
+function onShowMoreE() {
+  $('.order-panel-E > div.inner-panel').toggleClass("overflow-panel");
+  $('.panelE-show-more').toggleClass("d-none");
+  $('.panelE-show-less').toggleClass("d-none");
+}
 
 function registerExpandClick() {
   $(".icon-expand-d").on("click", expandPanelD);
