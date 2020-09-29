@@ -1,8 +1,7 @@
 $(document).ready(function () {
   removeBeakLines()
   registerExpandClick()
-
-  $("td").css({"height": "30px"})
+  adjustCss();  
 });
 
 function registerExpandClick() {
@@ -125,6 +124,13 @@ function expandPanelD(event) {
   parentC.toggleClass("d-none");    
   $(".icon-contract-d").toggleClass('d-none')
   $(".icon-expand-d").toggleClass('d-lg-block')
+}
+
+function adjustCss() {
+  $("td").css({"height": "30px"})
+  $("td > a").css({"height": "30px"})
+  $("td > a > div > div > p").css({"height": "20px"})
+  $("td > a > div > div > p").parent().parent().parent().parent().css({"height": "30px"})
 }
 
 function removeBeakLines() {

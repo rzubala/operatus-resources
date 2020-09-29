@@ -16,6 +16,10 @@ table > tbody > tr > td > div {
     height: 30px !important;
 }
 
+td > a > div > div {
+    line-height: 2;
+}
+
 .h-300 {
     height: 300px !important;
 }
