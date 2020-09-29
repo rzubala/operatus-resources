@@ -9,6 +9,9 @@ function registerExpandClick() {
 
   $(".icon-expand-c").on("click", expandPanelC);
   $(".icon-contract-c").on("click", expandPanelC);
+
+  $(".icon-expand-e").on("click", expandPanelE);
+  $(".icon-contract-e").on("click", expandPanelE);
 }
 
 function expandPanelC(event) {
@@ -32,6 +35,43 @@ function expandPanelC(event) {
   $(".icon-expand-c").toggleClass('d-lg-block')
 }
 
+function expandPanelE(event) {
+  event.stopPropagation();
+  event.stopImmediatePropagation();
+
+  var parentC = $(".order-panel-C").parent();
+  var parentD = $(".order-panel-D").parent();
+  var firstCol = $(".first-col")
+  var parentE = $(".order-panel-E").parent().detach();
+  var mainRow = $(".main-row");
+  var secondRow = $(".second-row");
+  
+  if (parentC.hasClass("d-none")) {
+    // from full view
+    firstCol.removeClass("col-lg-12")
+    firstCol.addClass("col-lg-9")
+    
+    mainRow.append(parentE);
+    var parentE = $(".order-panel-E").parent();
+    parentE.removeClass("col-lg-12");
+    parentE.addClass("col-lg-3");
+  } else {
+    // to full view
+    firstCol.removeClass("col-lg-9");
+    firstCol.addClass("col-lg-12");
+    
+    secondRow.append(parentE);
+    var parentE = $(".order-panel-E").parent();
+    parentE.removeClass("col-lg-3");
+    parentE.addClass("col-lg-12");
+  }
+  
+  parentC.toggleClass("d-none");
+  parentD.toggleClass("d-none");
+  $(".icon-contract-e").toggleClass('d-none')
+  $(".icon-expand-e").toggleClass('d-lg-block')
+}
+
 function expandPanelD(event) {
   event.stopPropagation();
   event.stopImmediatePropagation();
@@ -44,10 +84,8 @@ function expandPanelD(event) {
   
   var mainRow = $(".main-row");
   var firstRow = $(".first-row");
-  var secondRow = $(".second-row");
   var firstCol = $(".first-col")
 
-  
   if (parentC.hasClass("d-none")) {
     // from full view
     parentD.removeClass("col-lg-12");

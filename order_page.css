@@ -15,14 +15,14 @@ body {
     position: relative;
 }
 
-.icon-expand-d, .icon-expand-c {
+.icon-expand-d, .icon-expand-c, .icon-expand-e {
     position: absolute;
     top: 12px;
     right: 12px;
     z-index: 10; 
 }
 
-.icon-contract-d, .icon-contract-c {
+.icon-contract-d, .icon-contract-c, .icon-contract-e {
     position: absolute;
     top: 12px;
     right: 12px;
@@ -58,6 +58,6 @@ body {
 
 .order-panel-E {  
     overflow-y: auto;
-    /* background-color: aliceblue; */
-    /* height: 100vh; */
+    /* background-color: aliceblue;
+    height: 200vh; */
 }
