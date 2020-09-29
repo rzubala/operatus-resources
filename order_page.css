@@ -4,7 +4,7 @@ body {
 }
 
 .h-300 {
-    height: 300px;
+    height: 300px !important;
 }
 
 .full-height {
@@ -24,12 +24,15 @@ body {
 
 .order-panel-C {
     /* background-color: bisque; */
+    /* height: 30vh; */
 }
 
 .order-panel-D {  
     /* background-color: aqua; */
+    /* height: 30vh; */
 }
 
 .order-panel-E {  
     /* background-color: aliceblue; */
+    /* height: 100vh; */
 }
