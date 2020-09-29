@@ -88,6 +88,11 @@ td > a > div > div {
     overflow-y: hidden;
 }
 
+.overflow-panel-E {
+    max-height: 92vh;
+    overflow-y: hidden;
+}
+
 .panelC-show-more, .panelD-show-more, .panelE-show-more {
     text-align: center;
     color: rgb(80,80,80)

@@ -29,7 +29,7 @@ function onShowMoreD() {
 }
 
 function onShowMoreE() {
-  $('.order-panel-E > div.inner-panel').toggleClass("overflow-panel");
+  $('.order-panel-E > div.inner-panel').toggleClass("overflow-panel-E");
   $('.panelE-show-more').toggleClass("d-none");
   $('.panelE-show-less').toggleClass("d-none");
 }
