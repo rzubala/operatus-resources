@@ -12,24 +12,24 @@ body {
 }
 
 .order-panel-A {
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
     overflow-y: auto;
     height: 300px;
 }
 .order-panel-B {
-    background-color: burlywood;
+    /* background-color: burlywood; */
     overflow-y: auto;
     height: 300px;
 }
 
 .order-panel-C {
-    background-color: bisque;
+    /* background-color: bisque; */
 }
 
 .order-panel-D {  
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 
 .order-panel-E {  
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
 }
