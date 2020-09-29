@@ -33,7 +33,7 @@ function expandPanelC(event) {
   }
   parentD.toggleClass("d-none");    
   $(".icon-contract-c").toggleClass('d-none')
-  $(".icon-expand-c").toggleClass('d-lg-block')
+  toggleExpandIcon()
 }
 
 function expandPanelE(event) {
@@ -70,7 +70,7 @@ function expandPanelE(event) {
   parentC.toggleClass("d-none");
   parentD.toggleClass("d-none");
   $(".icon-contract-e").toggleClass('d-none')
-  $(".icon-expand-e").toggleClass('d-lg-block')
+  toggleExpandIcon()
 }
 
 function expandPanelD(event) {
@@ -123,7 +123,13 @@ function expandPanelD(event) {
   }
   parentC.toggleClass("d-none");    
   $(".icon-contract-d").toggleClass('d-none')
+  toggleExpandIcon()
+}
+
+function toggleExpandIcon() {
+  $(".icon-expand-c").toggleClass('d-lg-block')
   $(".icon-expand-d").toggleClass('d-lg-block')
+  $(".icon-expand-e").toggleClass('d-lg-block')
 }
 
 function adjustCss() {
