@@ -3,6 +3,18 @@ body {
     height: 100%;
 }
 
+table > tbody > tr {
+    height: 30px !important;
+}
+
+table > tbody > tr > td,
+table > tbody > tr > td > div {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 9pt !important;
+    height: 30px !important;
+}
+
 .h-300 {
     height: 300px !important;
 }
