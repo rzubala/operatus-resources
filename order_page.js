@@ -57,7 +57,7 @@ function expandPanelD(event) {
   }
   parentC.toggleClass("d-none");    
   $(".icon-contract").toggleClass('d-none')
-  $(".icon-expand").toggleClass('d-none')
+  $(".icon-expand").toggleClass('d-lg-block')
 }
 
 function removeBeakLines() {
