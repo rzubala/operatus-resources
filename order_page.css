@@ -11,6 +11,30 @@ body {
     height: 100vh;
 }
 
+.order_panel {
+    position: relative;
+}
+
+.icon-expand {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 10; 
+}
+
+.icon-contract {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 10;
+}
+
+.inner_panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 .order-panel-A {
     /* background-color: blueviolet; */
     overflow-y: auto;
