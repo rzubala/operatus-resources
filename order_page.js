@@ -1,6 +1,8 @@
 $(document).ready(function () {
   removeBeakLines()
   registerExpandClick()
+
+  $("td").css({"height": "30px"})
 });
 
 function registerExpandClick() {
