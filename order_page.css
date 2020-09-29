@@ -17,14 +17,14 @@ body {
 
 .icon-expand-d, .icon-expand-c, .icon-expand-e {
     position: absolute;
-    top: 12px;
+    top: 14px;
     right: 12px;
     z-index: 10; 
 }
 
 .icon-contract-d, .icon-contract-c, .icon-contract-e {
     position: absolute;
-    top: 12px;
+    top: 14px;
     right: 12px;
     z-index: 10;
 }
