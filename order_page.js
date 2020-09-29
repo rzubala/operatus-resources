@@ -172,3 +172,7 @@ function adjustCss() {
 function removeBeakLines() {
   $("br").remove();
 }
+
+function vhToPx(vh) {
+	return vh * document.documentElement.clientHeight / 100;
+}
