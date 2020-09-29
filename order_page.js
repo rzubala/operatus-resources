@@ -1,9 +1,36 @@
 $(document).ready(function () {
   removeBeakLines()
-
-  $(".icon-expand").on("click", expandPanelD);
-  $(".icon-contract").on("click", expandPanelD);
+  registerExpandClick()
 });
+
+function registerExpandClick() {
+  $(".icon-expand-d").on("click", expandPanelD);
+  $(".icon-contract-d").on("click", expandPanelD);
+
+  $(".icon-expand-c").on("click", expandPanelC);
+  $(".icon-contract-c").on("click", expandPanelC);
+}
+
+function expandPanelC(event) {
+  event.stopPropagation();
+  event.stopImmediatePropagation();
+  
+  var parentC = $(".order-panel-C").parent();
+  var parentD = $(".order-panel-D").parent();
+
+  if (parentD.hasClass("d-none")) {
+    // from full view
+    parentC.removeClass("col-lg-12")
+    parentC.addClass("col-lg-4")
+  } else {
+    // to full view
+    parentC.removeClass("col-lg-4")
+    parentC.addClass("col-lg-12")
+  }
+  parentD.toggleClass("d-none");    
+  $(".icon-contract-c").toggleClass('d-none')
+  $(".icon-expand-c").toggleClass('d-lg-block')
+}
 
 function expandPanelD(event) {
   event.stopPropagation();
@@ -56,8 +83,8 @@ function expandPanelD(event) {
     panelE.addClass('h-300');
   }
   parentC.toggleClass("d-none");    
-  $(".icon-contract").toggleClass('d-none')
-  $(".icon-expand").toggleClass('d-lg-block')
+  $(".icon-contract-d").toggleClass('d-none')
+  $(".icon-expand-d").toggleClass('d-lg-block')
 }
 
 function removeBeakLines() {

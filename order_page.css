@@ -15,14 +15,14 @@ body {
     position: relative;
 }
 
-.icon-expand {
+.icon-expand-d, .icon-expand-c {
     position: absolute;
     top: 12px;
     right: 12px;
     z-index: 10; 
 }
 
-.icon-contract {
+.icon-contract-d, .icon-contract-c {
     position: absolute;
     top: 12px;
     right: 12px;
