@@ -1,7 +1,6 @@
 $(document).ready(function () {
   removeBeakLines()
 
-  $(".icon-contract").addClass('d-none')
   $(".icon-expand").on("click", expandPanelD);
   $(".icon-contract").on("click", expandPanelD);
 });
