@@ -11,6 +11,7 @@ table > tbody > tr > td,
 table > tbody > tr > td > div {
     text-overflow: ellipsis;
     overflow: hidden;
+    white-space: nowrap;
     font-size: 9pt !important;
     height: 30px !important;
 }
@@ -29,14 +30,18 @@ table > tbody > tr > td > div {
 
 .icon-expand-d, .icon-expand-c, .icon-expand-e {
     position: absolute;
-    top: 14px;
+    top: 12px;
     right: 12px;
     z-index: 10; 
 }
 
+.icon-expand-e-top {
+    top: 14px;
+}
+
 .icon-contract-d, .icon-contract-c, .icon-contract-e {
     position: absolute;
-    top: 14px;
+    top: 12px;
     right: 12px;
     z-index: 10;
 }
@@ -55,7 +60,7 @@ table > tbody > tr > td > div {
 .order-panel-B {
     /* background-color: burlywood; */
     overflow-y: auto;
-    height: 285px;
+    height: 276px;
 }
 
 .order-panel-C {
