@@ -33,6 +33,7 @@ body {
 }
 
 .order-panel-E {  
+    overflow-y: auto;
     /* background-color: aliceblue; */
     /* height: 100vh; */
 }
