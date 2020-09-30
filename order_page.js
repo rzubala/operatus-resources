@@ -17,21 +17,33 @@ function showMore() {
 }
 
 function onShowMoreC() {
-  $('.order-panel-C > div.inner-panel').toggleClass("overflow-panel");
+  const panelC = $('.order-panel-C > div.inner-panel')
+  const srcHeight = panelC.height()
+  panelC.toggleClass("overflow-panel");
   $('.panelC-show-more').toggleClass("d-none");
   $('.panelC-show-less').toggleClass("d-none");
+
+  animateHeight(panelC, srcHeight)
 }
 
 function onShowMoreD() {
-  $('.order-panel-D > div.inner-panel').toggleClass("overflow-panel");
+  const panelD = $('.order-panel-D > div.inner-panel')
+  const srcHeight = panelD.height()
+  panelD.toggleClass("overflow-panel");
   $('.panelD-show-more').toggleClass("d-none");
   $('.panelD-show-less').toggleClass("d-none");
+
+  animateHeight(panelD, srcHeight)
 }
 
 function onShowMoreE() {
-  $('.order-panel-E > div.inner-panel').toggleClass("overflow-panel-E");
+  const panelE = $('.order-panel-E > div.inner-panel')
+  const srcHeight = panelE.height()
+  panelE.toggleClass("overflow-panel-E");
   $('.panelE-show-more').toggleClass("d-none");
   $('.panelE-show-less').toggleClass("d-none");
+
+  animateHeight(panelE, srcHeight)
 }
 
 function registerExpandClick() {
@@ -174,13 +186,26 @@ function expandPanelD(event) {
 
 function animateWidth(panel, srcWidth) {
   const dstWidth = panel.width();
-  panel.css('opacity', 0.2)
+  panel.css('opacity', 0.5)
   panel.css('width', srcWidth)
   panel.animate({
     width: dstWidth + "px",
     opacity: 1,
   }, 250, 'swing', function() {
     panel.css('width', '100%')
+  });
+}
+
+function animateHeight(panel, srcHeight) {
+  const dstHeight = panel.height();
+  panel.css('opacity', 0.5)
+  panel.css('height', srcHeight)
+  console.log(srcHeight, dstHeight)
+  panel.animate({
+    height: dstHeight + "px",
+    opacity: 1,
+  }, 1000, 'swing', function() {
+    panel.css('height', '100%')
   });
 }
 
