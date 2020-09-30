@@ -56,7 +56,7 @@ function onShowMoreE() {
     animateHeight(panelE, srcHeight, "overflow-panel-E", vhToPx(92));
   }
 
-  $(".panelE-show-more").toggleClass("d-none");
+  $(".panelE-show-more").toggleClass("d-lg-block");
   $(".panelE-show-less").toggleClass("d-none");
 }
 
