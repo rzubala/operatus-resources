@@ -65,10 +65,13 @@ td > a > div > div {
   overflow-y: auto;
   height: 300px;
 }
-.order-panel-B {
-  /* background-color: burlywood; */
-  overflow-y: auto;
-  height: 276px;
+
+@media (min-width: 992px) {
+  .order-panel-B {
+    /* background-color: burlywood; */
+    overflow-y: auto;
+    height: 276px;
+  }
 }
 
 .order-panel-C {
