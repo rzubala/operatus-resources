@@ -49,8 +49,11 @@ function expandPanelC(event) {
   event.stopPropagation();
   event.stopImmediatePropagation();
   
+  var panelC = $(".order-panel-C")
   var parentC = $(".order-panel-C").parent();
   var parentD = $(".order-panel-D").parent();
+
+  const srcWidth = panelC.width();
 
   if (parentD.hasClass("d-none")) {
     // from full view
@@ -64,6 +67,8 @@ function expandPanelC(event) {
   parentD.toggleClass("d-none");    
   $(".icon-contract-c").toggleClass('d-none')
   toggleExpandIcon()
+
+  animateWidth(panelC, srcWidth)
 }
 
 function expandPanelE(event) {
@@ -73,7 +78,11 @@ function expandPanelE(event) {
   var parentC = $(".order-panel-C").parent();
   var parentD = $(".order-panel-D").parent();
   var firstCol = $(".first-col")
-  var parentE = $(".order-panel-E").parent().detach();
+  const panelE =$(".order-panel-E")
+  const srcWidth = panelE.width()
+  var parentE = panelE.parent()  
+  parentE.detach();
+
   var mainRow = $(".main-row");
   var secondRow = $(".second-row");
   
@@ -101,6 +110,8 @@ function expandPanelE(event) {
   parentD.toggleClass("d-none");
   $(".icon-contract-e").toggleClass('d-none')
   toggleExpandIcon()
+
+  animateWidth(panelE, srcWidth)
 }
 
 function expandPanelD(event) {
@@ -112,6 +123,9 @@ function expandPanelD(event) {
   var parentC = $(".order-panel-C").parent();
   var parentD = $(".order-panel-D").parent();
   var parentE = $(".order-panel-E").parent().detach();
+
+  var panelD = $(".order-panel-D")
+  const srcWidth = panelD.width();
   
   var mainRow = $(".main-row");
   var firstRow = $(".first-row");
@@ -154,6 +168,20 @@ function expandPanelD(event) {
   parentC.toggleClass("d-none");    
   $(".icon-contract-d").toggleClass('d-none')
   toggleExpandIcon()
+
+  animateWidth(panelD, srcWidth)
+}
+
+function animateWidth(panel, srcWidth) {
+  const dstWidth = panel.width();
+  panel.css('opacity', 0.2)
+  panel.css('width', srcWidth)
+  panel.animate({
+    width: dstWidth + "px",
+    opacity: 1,
+  }, 250, 'swing', function() {
+    panel.css('width', '100%')
+  });
 }
 
 function toggleExpandIcon() {
