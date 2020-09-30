@@ -1,49 +1,63 @@
 $(document).ready(function () {
-  removeBeakLines()
-  registerExpandClick()
+  removeBeakLines();
+  registerExpandClick();
   adjustCss();
   showMore();
 });
 
 function showMore() {
-  $('.panelC-show-more').on('click', onShowMoreC);
-  $('.panelC-show-less').on('click', onShowMoreC);
+  $(".panelC-show-more").on("click", onShowMoreC);
+  $(".panelC-show-less").on("click", onShowMoreC);
 
-  $('.panelD-show-more').on('click', onShowMoreD);
-  $('.panelD-show-less').on('click', onShowMoreD);
+  $(".panelD-show-more").on("click", onShowMoreD);
+  $(".panelD-show-less").on("click", onShowMoreD);
 
-  $('.panelE-show-more').on('click', onShowMoreE);
-  $('.panelE-show-less').on('click', onShowMoreE);
+  $(".panelE-show-more").on("click", onShowMoreE);
+  $(".panelE-show-less").on("click", onShowMoreE);
 }
 
 function onShowMoreC() {
-  const panelC = $('.order-panel-C > div.inner-panel')
-  const srcHeight = panelC.height()
-  panelC.toggleClass("overflow-panel");
-  $('.panelC-show-more').toggleClass("d-none");
-  $('.panelC-show-less').toggleClass("d-none");
+  const panelC = $(".order-panel-C > div.inner-panel");
+  const srcHeight = panelC.height();
 
-  animateHeight(panelC, srcHeight)
+  $(".panelC-show-more").toggleClass("d-none");
+  $(".panelC-show-less").toggleClass("d-none");
+
+  if (panelC.hasClass("overflow-panel")) {
+    panelC.toggleClass("overflow-panel");
+    animateHeight(panelC, srcHeight);
+  } else {
+    animateHeight(panelC, srcHeight, "overflow-panel", vhToPx(92) - 300);
+  }
 }
 
 function onShowMoreD() {
-  const panelD = $('.order-panel-D > div.inner-panel')
-  const srcHeight = panelD.height()
-  panelD.toggleClass("overflow-panel");
-  $('.panelD-show-more').toggleClass("d-none");
-  $('.panelD-show-less').toggleClass("d-none");
+  const panelD = $(".order-panel-D > div.inner-panel");
+  const srcHeight = panelD.height();
 
-  animateHeight(panelD, srcHeight)
+  $(".panelD-show-more").toggleClass("d-none");
+  $(".panelD-show-less").toggleClass("d-none");
+
+  if (panelD.hasClass("overflow-panel")) {
+    panelD.toggleClass("overflow-panel");
+    animateHeight(panelD, srcHeight);
+  } else {
+    animateHeight(panelD, srcHeight, "overflow-panel", vhToPx(92) - 300);
+  }
 }
 
 function onShowMoreE() {
-  const panelE = $('.order-panel-E > div.inner-panel')
-  const srcHeight = panelE.height()
-  panelE.toggleClass("overflow-panel-E");
-  $('.panelE-show-more').toggleClass("d-none");
-  $('.panelE-show-less').toggleClass("d-none");
+  const panelE = $(".order-panel-E > div.inner-panel");
+  const srcHeight = panelE.height();
+  if (panelE.hasClass("overflow-panel-E")) {
+    panelE.toggleClass("overflow-panel-E");
+    animateHeight(panelE, srcHeight);
+  } else {
+    animateHeight(panelE, srcHeight, "overflow-panel-E", vhToPx(92));
+  }
 
-  animateHeight(panelE, srcHeight)
+  $(".panelE-show-more").toggleClass("d-none");
+  $(".panelE-show-less").toggleClass("d-none");
 }
 
 function registerExpandClick() {
@@ -60,8 +74,8 @@ function registerExpandClick() {
 function expandPanelC(event) {
   event.stopPropagation();
   event.stopImmediatePropagation();
-  
-  var panelC = $(".order-panel-C")
+
+  var panelC = $(".order-panel-C");
   var parentC = $(".order-panel-C").parent();
   var parentD = $(".order-panel-D").parent();
 
@@ -69,18 +83,18 @@ function expandPanelC(event) {
 
   if (parentD.hasClass("d-none")) {
     // from full view
-    parentC.removeClass("col-lg-12")
-    parentC.addClass("col-lg-4")
+    parentC.removeClass("col-lg-12");
+    parentC.addClass("col-lg-4");
   } else {
     // to full view
-    parentC.removeClass("col-lg-4")
-    parentC.addClass("col-lg-12")
+    parentC.removeClass("col-lg-4");
+    parentC.addClass("col-lg-12");
   }
-  parentD.toggleClass("d-none");    
-  $(".icon-contract-c").toggleClass('d-none')
-  toggleExpandIcon()
+  parentD.toggleClass("d-none");
+  $(".icon-contract-c").toggleClass("d-none");
+  toggleExpandIcon();
 
-  animateWidth(panelC, srcWidth)
+  animateWidth(panelC, srcWidth);
 }
 
 function expandPanelE(event) {
@@ -89,20 +103,20 @@ function expandPanelE(event) {
 
   var parentC = $(".order-panel-C").parent();
   var parentD = $(".order-panel-D").parent();
-  var firstCol = $(".first-col")
-  const panelE =$(".order-panel-E")
-  const srcWidth = panelE.width()
-  var parentE = panelE.parent()  
+  var firstCol = $(".first-col");
+  const panelE = $(".order-panel-E");
+  const srcWidth = panelE.width();
+  var parentE = panelE.parent();
   parentE.detach();
 
   var mainRow = $(".main-row");
   var secondRow = $(".second-row");
-  
+
   if (parentC.hasClass("d-none")) {
     // from full view
-    firstCol.removeClass("col-lg-12")
-    firstCol.addClass("col-lg-9")
-    
+    firstCol.removeClass("col-lg-12");
+    firstCol.addClass("col-lg-9");
+
     mainRow.append(parentE);
     var parentE = $(".order-panel-E").parent();
     parentE.removeClass("col-lg-12");
@@ -111,19 +125,19 @@ function expandPanelE(event) {
     // to full view
     firstCol.removeClass("col-lg-9");
     firstCol.addClass("col-lg-12");
-    
+
     secondRow.append(parentE);
     var parentE = $(".order-panel-E").parent();
     parentE.removeClass("col-lg-3");
     parentE.addClass("col-lg-12");
   }
-  
+
   parentC.toggleClass("d-none");
   parentD.toggleClass("d-none");
-  $(".icon-contract-e").toggleClass('d-none')
-  toggleExpandIcon()
+  $(".icon-contract-e").toggleClass("d-none");
+  toggleExpandIcon();
 
-  animateWidth(panelE, srcWidth)
+  animateWidth(panelE, srcWidth);
 }
 
 function expandPanelD(event) {
@@ -136,90 +150,110 @@ function expandPanelD(event) {
   var parentD = $(".order-panel-D").parent();
   var parentE = $(".order-panel-E").parent().detach();
 
-  var panelD = $(".order-panel-D")
+  var panelD = $(".order-panel-D");
   const srcWidth = panelD.width();
-  
+
   var mainRow = $(".main-row");
   var firstRow = $(".first-row");
-  var firstCol = $(".first-col")
+  var firstCol = $(".first-col");
 
   if (parentC.hasClass("d-none")) {
     // from full view
     parentD.removeClass("col-lg-12");
     parentD.addClass("col-lg-8");
 
-    firstCol.removeClass("col-lg-12")
-    firstCol.addClass("col-lg-9")
+    firstCol.removeClass("col-lg-12");
+    firstCol.addClass("col-lg-9");
 
     firstCol.removeClass("col-lg-12");
     firstCol.addClass("col-lg-9");
     mainRow.append(parentE);
     var panelE = $(".order-panel-E");
-    
-    parentA.removeClass("col-lg-6")
-    parentA.addClass("col-lg-8")
-    parentB.removeClass("col-lg-3")
-    parentB.addClass("col-lg-4")
-    panelE.removeClass('h-300');
+
+    parentA.removeClass("col-lg-6");
+    parentA.addClass("col-lg-8");
+    parentB.removeClass("col-lg-3");
+    parentB.addClass("col-lg-4");
+    panelE.removeClass("h-300");
   } else {
     // to full view
     parentD.removeClass("col-lg-8");
-    parentD.addClass("col-lg-12");      
+    parentD.addClass("col-lg-12");
 
     firstCol.removeClass("col-lg-9");
     firstCol.addClass("col-lg-12");
     firstRow.append(parentE);
     var panelE = $(".order-panel-E");
 
-    parentA.removeClass("col-lg-8")
-    parentA.addClass("col-lg-6")
-    parentB.removeClass("col-lg-4")
-    parentB.addClass("col-lg-3")
-    panelE.addClass('h-300');
+    parentA.removeClass("col-lg-8");
+    parentA.addClass("col-lg-6");
+    parentB.removeClass("col-lg-4");
+    parentB.addClass("col-lg-3");
+    panelE.addClass("h-300");
   }
-  parentC.toggleClass("d-none");    
-  $(".icon-contract-d").toggleClass('d-none')
-  toggleExpandIcon()
+  parentC.toggleClass("d-none");
+  $(".icon-contract-d").toggleClass("d-none");
+  toggleExpandIcon();
 
-  animateWidth(panelD, srcWidth)
+  animateWidth(panelD, srcWidth);
 }
 
 function animateWidth(panel, srcWidth) {
   const dstWidth = panel.width();
-  panel.css('opacity', 0.5)
-  panel.css('width', srcWidth)
-  panel.animate({
-    width: dstWidth + "px",
-    opacity: 1,
-  }, 250, 'swing', function() {
-    panel.css('width', '100%')
-  });
+  panel.css("opacity", 0.5);
+  panel.css("width", srcWidth);
+  panel.animate(
+    {
+      width: dstWidth + "px",
+      opacity: 1,
+    },
+    250,
+    "swing",
+    function () {
+      panel.css("width", "100%");
+    }
+  );
 }
 
-function animateHeight(panel, srcHeight) {
-  const dstHeight = panel.height();
-  panel.css('opacity', 0.5)
-  panel.css('height', srcHeight)
-  console.log(srcHeight, dstHeight)
-  panel.animate({
-    height: dstHeight + "px",
-    opacity: 1,
-  }, 1000, 'swing', function() {
-    panel.css('height', '100%')
-  });
+function animateHeight(panel, srcHeight, classToAdd, forceDstHeight) {
+  var dstHeight = forceDstHeight;
+  if (dstHeight === undefined) {
+    dstHeight = panel.height();
+  }
+  panel.css("opacity", 0.5);
+  panel.css("height", srcHeight);
+  panel.animate(
+    {
+      height: dstHeight + "px",
+      opacity: 1,
+    },
+    1000,
+    "swing",
+    function () {
+      panel.css("height", "100%");
+      if (classToAdd !== undefined) {
+        panel.toggleClass(classToAdd);
+      }
+    }
+  );
 }
 
 function toggleExpandIcon() {
-  $(".icon-expand-c").toggleClass('d-lg-block')
-  $(".icon-expand-d").toggleClass('d-lg-block')
-  $(".icon-expand-e").toggleClass('d-lg-block')
+  $(".icon-expand-c").toggleClass("d-lg-block");
+  $(".icon-expand-d").toggleClass("d-lg-block");
+  $(".icon-expand-e").toggleClass("d-lg-block");
 }
 
 function adjustCss() {
-  $("td").css({"height": "30px"})
-  $("td > a").css({"height": "30px"})
-  $("td > a > div > div > p").css({"height": "20px"})
-  $("td > a > div > div > p").parent().parent().parent().parent().css({"height": "30px"})
+  $("td").css({ height: "30px" });
+  $("td > a").css({ height: "30px" });
+  $("td > a > div > div > p").css({ height: "20px" });
+  $("td > a > div > div > p")
+    .parent()
+    .parent()
+    .parent()
+    .parent()
+    .css({ height: "30px" });
 }
 
 function removeBeakLines() {
@@ -227,5 +261,5 @@ function removeBeakLines() {
 }
 
 function vhToPx(vh) {
-	return vh * document.documentElement.clientHeight / 100;
+  return (vh * document.documentElement.clientHeight) / 100;
 }
