@@ -18,46 +18,30 @@ function showMore() {
 
 function onShowMoreC() {
   const panelC = $(".order-panel-C > div.inner-panel");
-  const srcHeight = panelC.height();
-
-  $(".panelC-show-more").toggleClass("d-lg-block");
-  $(".panelC-show-less").toggleClass("d-none");
-
-  if (panelC.hasClass("overflow-panel")) {
-    panelC.toggleClass("overflow-panel");
-    animateHeight(panelC, srcHeight);
-  } else {
-    animateHeight(panelC, srcHeight, "overflow-panel", vhToPx(92) - 300);
-  }
+  onShowMoreCommon(panelC, "panelC", "", 300)
 }
 
 function onShowMoreD() {
   const panelD = $(".order-panel-D > div.inner-panel");
-  const srcHeight = panelD.height();
-
-  $(".panelD-show-more").toggleClass("d-lg-block");
-  $(".panelD-show-less").toggleClass("d-none");
-
-  if (panelD.hasClass("overflow-panel")) {
-    panelD.toggleClass("overflow-panel");
-    animateHeight(panelD, srcHeight);
-  } else {
-    animateHeight(panelD, srcHeight, "overflow-panel", vhToPx(92) - 300);
-  }
+  onShowMoreCommon(panelD, "panelD", "", 300)
 }
 
 function onShowMoreE() {
   const panelE = $(".order-panel-E > div.inner-panel");
-  const srcHeight = panelE.height();
-  if (panelE.hasClass("overflow-panel-E")) {
-    panelE.toggleClass("overflow-panel-E");
-    animateHeight(panelE, srcHeight);
-  } else {
-    animateHeight(panelE, srcHeight, "overflow-panel-E", vhToPx(92));
-  }
+  onShowMoreCommon(panelE, "panelE", "-E", 0)
+}
 
-  $(".panelE-show-more").toggleClass("d-lg-block");
-  $(".panelE-show-less").toggleClass("d-none");
+function onShowMoreCommon(panel, name, postfix, offset) {
+  const srcHeight = panel.height();
+  $("." + name + "-show-more").toggleClass("d-lg-block");
+  $("." + name + "-show-less").toggleClass("d-none");
+
+  if (panel.hasClass("overflow-panel" + postfix)) {
+    panel.toggleClass("overflow-panel" + postfix);
+    animateHeight(panel, srcHeight);
+  } else {
+    animateHeight(panel, srcHeight, "overflow-panel" + postfix, vhToPx(92) - offset);
+  }
 }
 
 function registerExpandClick() {
