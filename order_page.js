@@ -20,7 +20,7 @@ function onShowMoreC() {
   const panelC = $(".order-panel-C > div.inner-panel");
   const srcHeight = panelC.height();
 
-  $(".panelC-show-more").toggleClass("d-none");
+  $(".panelC-show-more").toggleClass("d-lg-block");
   $(".panelC-show-less").toggleClass("d-none");
 
   if (panelC.hasClass("overflow-panel")) {
@@ -35,7 +35,7 @@ function onShowMoreD() {
   const panelD = $(".order-panel-D > div.inner-panel");
   const srcHeight = panelD.height();
 
-  $(".panelD-show-more").toggleClass("d-none");
+  $(".panelD-show-more").toggleClass("d-lg-block");
   $(".panelD-show-less").toggleClass("d-none");
 
   if (panelD.hasClass("overflow-panel")) {
