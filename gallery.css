@@ -16,3 +16,7 @@
 .gallery-image {
   margin-bottom: 15px;
 }
+
+.gallery-container {
+  overflow-x: hidden;
+}
