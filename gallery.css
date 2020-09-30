@@ -15,6 +15,7 @@
 
 .gallery-image {
   margin-bottom: 15px;
+  cursor: pointer;
 }
 
 .gallery-container {
