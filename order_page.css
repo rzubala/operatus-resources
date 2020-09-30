@@ -95,10 +95,18 @@ td > a > div > div {
 
 .panelC-show-more, .panelD-show-more, .panelE-show-more {
     text-align: center;
-    color: rgb(80,80,80)
+    color: rgb(80,80,80);
+    opacity: 0.3
 }
 
 .panelC-show-less, .panelD-show-less, .panelE-show-less {
     text-align: center;
-    color: rgb(80,80,80)
+    color: rgb(80,80,80);
+    opacity: 0.3
+}
+
+.panelC-show-more:hover, .panelD-show-more:hover, .panelE-show-more:hover,
+.panelC-show-less:hover, .panelD-show-less:hover, .panelE-show-less:hover {
+    opacity: 1;
+    transition: opacity 0.75s ease-in-out;
 }
