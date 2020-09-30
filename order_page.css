@@ -84,7 +84,7 @@ td > a > div > div {
 }
 
 .overflow-panel {
-    max-height: 60vh;
+    max-height: calc(92vh - 300px);
     overflow-y: hidden;
 }
 
