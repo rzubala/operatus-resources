@@ -9,7 +9,7 @@
 
 @media (min-width: 576px) {
   .carousel-item img {
-    height: calc(90vh - 24px - 2*16px - 46px - 2*12px);
+    height: calc(95vh - 24px - 2*16px - 46px - 2*12px);
   }
 }
 

@@ -14,7 +14,7 @@ $bootstrap-xl: 1200px;
     height: 90vw;
     object-fit: cover;
     @media (min-width: $bootstrap-sm) {
-      height: calc(90vh - 24px - 2*16px - 46px - 2*12px);
+      height: calc(95vh - 24px - 2*16px - 46px - 2*12px);
     }
   }
 }
