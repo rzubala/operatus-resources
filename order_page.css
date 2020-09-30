@@ -96,17 +96,22 @@ td > a > div > div {
 .panelC-show-more, .panelD-show-more, .panelE-show-more {
     text-align: center;
     color: rgb(80,80,80);
-    opacity: 0.3
+    opacity: 0.3;
+    transform: scale(0.8);
 }
 
 .panelC-show-less, .panelD-show-less, .panelE-show-less {
     text-align: center;
     color: rgb(80,80,80);
-    opacity: 0.3
+    opacity: 0.3;
+    transform: scale(0.8);
 }
 
 .panelC-show-more:hover, .panelD-show-more:hover, .panelE-show-more:hover,
 .panelC-show-less:hover, .panelD-show-less:hover, .panelE-show-less:hover {
     opacity: 1;
+    transform: scale(1.0);
     transition: opacity 0.75s ease-in-out;
+    transition: transform 0.5s ease-in-out;
+    
 }
