@@ -60,24 +60,31 @@ function expandPanelC(event) {
   event.stopImmediatePropagation();
 
   var panelC = $(".order-panel-C");
+  var panelD = $(".order-panel-D");
   var parentC = $(".order-panel-C").parent();
   var parentD = $(".order-panel-D").parent();
 
   const srcWidth = panelC.width();
 
+  var opacityFrom, opacityTo;
   if (parentD.hasClass("d-none")) {
     // from full view
     parentC.removeClass("col-lg-12");
     parentC.addClass("col-lg-4");
+    opacityFrom = 0;
+    opacityTo = 1;
   } else {
     // to full view
     parentC.removeClass("col-lg-4");
     parentC.addClass("col-lg-12");
+    opacityFrom = 1;
+    opacityTo = 0;
   }
-  parentD.toggleClass("d-none");
+  
   $(".icon-contract-c").toggleClass("d-none");
   toggleExpandIcon();
 
+  animateOpacity(panelD, opacityFrom, opacityTo, parentD)
   animateWidth(panelC, srcWidth);
 }
 
@@ -182,6 +189,21 @@ function expandPanelD(event) {
   animateWidth(panelD, srcWidth);
 }
 
+function animateOpacity(panel, from, to, parent) {
+  panel.css("opacity", from);
+  panel.animate(
+    {
+      opacity: to,
+    },
+    300,
+    "swing",
+    function () {
+      panel.css("opacity", 1);
+      parent.toggleClass("d-none");
+    }
+  );
+}
+
 function animateWidth(panel, srcWidth) {
   const dstWidth = panel.width();
   panel.css("opacity", 0.5);
@@ -191,7 +213,7 @@ function animateWidth(panel, srcWidth) {
       width: dstWidth + "px",
       opacity: 1,
     },
-    250,
+    200,
     "swing",
     function () {
       panel.css("width", "100%");
