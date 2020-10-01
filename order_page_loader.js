@@ -1,14 +1,14 @@
 $(document).ready(function () {
-  $.get(window.location.pathname + "&aaa", 
-  function (data) {
-    $("#loader").addClass("d-none");
+  $.get(window.location.pathname + "&data", function (data) {
     $("#order-data").html(data);
     onDataRetrieved();
-  },
-  function (err) {
-    $("#loader").addClass("d-none");
-    $("#data-error").removeClass("d-none");
-  });
+  }).fail(function () {
+      $("#loader").addClass("d-none");
+      $("#data-error").removeClass("d-none");
+    })
+    .always(function () {
+      $("#loader").addClass("d-none");
+    });
 });
 
 function onDataRetrieved() {
