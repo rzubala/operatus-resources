@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $.get(window.location.pathname + "&ala", function (data) {
+  $.get(window.location.pathname + "&data", function (data) {
     $("#order-data").html(data);
     onDataRetrieved();
   }).fail(function () {
