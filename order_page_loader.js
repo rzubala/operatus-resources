@@ -1,8 +1,13 @@
 $(document).ready(function () {
-  $.get(window.location.pathname + "&data", function( data ) {
-    $("#loader").addClass("d-none")
-    $("#order-data").html(data)
-    onDataRetrieved()
+  $.get(window.location.pathname + "&aaa", 
+  function (data) {
+    $("#loader").addClass("d-none");
+    $("#order-data").html(data);
+    onDataRetrieved();
+  },
+  function (err) {
+    $("#loader").addClass("d-none");
+    $("#data-error").removeClass("d-none");
   });
 });
 
@@ -26,17 +31,17 @@ function showMore() {
 
 function onShowMoreC() {
   const panelC = $(".order-panel-C > div.inner-panel");
-  onShowMoreCommon(panelC, "panelC", "", 300)
+  onShowMoreCommon(panelC, "panelC", "", 300);
 }
 
 function onShowMoreD() {
   const panelD = $(".order-panel-D > div.inner-panel");
-  onShowMoreCommon(panelD, "panelD", "", 300)
+  onShowMoreCommon(panelD, "panelD", "", 300);
 }
 
 function onShowMoreE() {
   const panelE = $(".order-panel-E > div.inner-panel");
-  onShowMoreCommon(panelE, "panelE", "-E", 0)
+  onShowMoreCommon(panelE, "panelE", "-E", 0);
 }
 
 function onShowMoreCommon(panel, name, postfix, offset) {
@@ -48,7 +53,12 @@ function onShowMoreCommon(panel, name, postfix, offset) {
     panel.toggleClass("overflow-panel" + postfix);
     animateHeight(panel, srcHeight);
   } else {
-    animateHeight(panel, srcHeight, "overflow-panel" + postfix, vhToPx(92) - offset);
+    animateHeight(
+      panel,
+      srcHeight,
+      "overflow-panel" + postfix,
+      vhToPx(92) - offset
+    );
   }
 }
 
@@ -88,11 +98,11 @@ function expandPanelC(event) {
     opacityFrom = 1;
     opacityTo = 0;
   }
-  
+
   $(".icon-contract-c").toggleClass("d-none");
   toggleExpandIcon();
 
-  animateOpacity(panelD, opacityFrom, opacityTo, parentD)
+  animateOpacity(panelD, opacityFrom, opacityTo, parentD);
   animateWidth(panelC, srcWidth);
 }
 
