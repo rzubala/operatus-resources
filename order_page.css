@@ -7,13 +7,19 @@ table > tbody > tr {
   height: 30px !important;
 }
 
-table > tbody > tr > td,
+table > tbody > tr > td {
+  height: 30px !important;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 9pt !important;
+}
+
 table > tbody > tr > td > div {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   font-size: 9pt !important;
-  height: 30px !important;
 }
 
 td > a > div > div {
