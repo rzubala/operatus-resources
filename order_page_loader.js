@@ -1,5 +1,7 @@
 $(document).ready(function () {
-  $.get("/orderpage/IZvgoI98J2w=", function( data ) {
+
+
+  $.get(window.location.pathname + "&data", function( data ) {
     //$( ".result" ).html( data );
     alert( "Load was performed." );
   });
