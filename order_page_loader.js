@@ -1,4 +1,4 @@
-const DEVEL = false;
+const DEVEL = true;
 
 $(document).ready(function () {
   if (DEVEL) {
@@ -21,10 +21,18 @@ $(document).ready(function () {
 
 function onDataRetrieved() {
   removeBeakLines();
-  registerExpandClick();
+  registerExpandClick(); //TODO to be removed
   adjustCss();
-  showMore(); //TO REMOVE
+  showMore(); //TODO REMOVE C and D
   handlePanelShowMore();
+  handlePanelFullScreen();
+}
+
+function handlePanelFullScreen() {
+  $(".operatus-expand-full").prepend(getExpandFullScreen());
+
+  $(".icon-expand").on("click", expandPanelFull);
+  $(".icon-contract").on("click", expandPanelFull);
 }
 
 function handlePanelShowMore() {
@@ -33,18 +41,40 @@ function handlePanelShowMore() {
   $(".panel-show-more").on("click", onShowMore);
   $(".panel-show-less").on("click", onShowMore);
 
-  setTimeout(function() {
-    $(".panel-show-more").toggleClass('panel-show-more-hover')
-    $(".panelE-show-more").toggleClass('panelE-show-more-hover')
-    $(".panelC-show-more").toggleClass('panelC-show-more-hover')
-    $(".panelD-show-more").toggleClass('panelD-show-more-hover')
-    setTimeout(function() {
-      $(".panel-show-more").toggleClass('panel-show-more-hover')
-      $(".panelE-show-more").toggleClass('panelE-show-more-hover')
-      $(".panelC-show-more").toggleClass('panelC-show-more-hover')
-      $(".panelD-show-more").toggleClass('panelD-show-more-hover')  
-    }, 1500)
-  }, 1000)
+  setTimeout(function () {
+    $(".panel-show-more").toggleClass("panel-show-more-hover");
+    $(".panelE-show-more").toggleClass("panelE-show-more-hover");
+    $(".panelC-show-more").toggleClass("panelC-show-more-hover");
+    $(".panelD-show-more").toggleClass("panelD-show-more-hover");
+    setTimeout(function () {
+      $(".panel-show-more").toggleClass("panel-show-more-hover");
+      $(".panelE-show-more").toggleClass("panelE-show-more-hover");
+      $(".panelC-show-more").toggleClass("panelC-show-more-hover");
+      $(".panelD-show-more").toggleClass("panelD-show-more-hover");
+    }, 1500);
+  }, 1000);
+}
+
+function expandPanelFull(event) {
+  const icon = event.target;
+  const panel = icon.closest(".operatus-expand-full");
+  const columnPanel = icon.closest(".inner-panel");
+  if (panel === undefined || columnPanel === undefined) {
+    return;
+  }
+  $(columnPanel).children().each(function () {
+      $(this).toggleClass("d-none");
+  });
+  $(panel).toggleClass("d-none")
+  expandPanelD(event);
+
+  const tablePanel = $(panel).find(".operatus-table-panel");
+  const size = tablePanel.length
+  if (size > 0) {
+    tableShowMore($(tablePanel[size-1]));
+  }
+  $(panel).find(".icon-expand").toggleClass("d-lg-block");
+  $(panel).find(".icon-contract").toggleClass("d-none");
 }
 
 function onShowMore(event) {
@@ -53,19 +83,22 @@ function onShowMore(event) {
   if (table === undefined) {
     return;
   }
-  const tablePanel = $(table.children[0]);
+  tableShowMore($(table.children[0]))
+}
+
+function tableShowMore(tablePanel) {  
   const hiddenRows = tablePanel.find(".operatus-row-hidden");
   const tableParent = tablePanel.parent();
-  const showIcon = tableParent.find("svg");
+  const showIcon = tableParent.find(".show-more-svg");
   const srcHeight = tableParent.height();
 
-  tableParent.css('overflow-y', 'hidden');
+  tableParent.css("overflow-y", "hidden");
   tableParent.css("opacity", 0.5);
-  
+
   hiddenRows.toggleClass("d-none");
-  
+
   const dstHeight = tableParent.height();
-  tableParent.css("height", srcHeight);  
+  tableParent.css("height", srcHeight);
   tableParent.animate(
     {
       height: dstHeight + "px",
@@ -73,13 +106,13 @@ function onShowMore(event) {
     },
     600,
     "swing",
-    function () {      
+    function () {
       tableParent.css("opacity", "");
-      tableParent.css('overflow-y', '');
+      tableParent.css("overflow-y", "");
       showIcon.parent().toggleClass("d-none");
       tableParent.css("height", "");
     }
-  );  
+  );
 }
 
 function showMore() {
@@ -354,15 +387,28 @@ function vhToPx(vh) {
 
 function getShowMoreHtml() {
   return `<div class="panel-show-more">
-  <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-down-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <svg class="show-more-svg" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-down-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
       <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
     </svg>
 </div>
 <div class="panel-show-less d-none">
-  <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <svg class="show-more-svg" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
       <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
     </svg>                                
 </div>`;
+}
+
+function getExpandFullScreen() {
+  return `<div class="icon-expand d-none d-lg-block">
+    <svg class="show-expand-svg" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrows-angle-expand" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707zm4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707z"></path>
+    </svg>
+  </div>
+  <div class="icon-contract d-none">
+    <svg class="show-expand-svg" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrows-angle-contract" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707zM15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707z"></path>
+    </svg>
+  </div>`;
 }
