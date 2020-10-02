@@ -48,35 +48,32 @@ function onShowMore(event) {
     return;
   }
   const tablePanel = $(table.children[0]);
-  const srcHeight = tablePanel.height();
   const hiddenRows = tablePanel.find(".operatus-row-hidden");
-  const showIcon = tablePanel.parent().find("svg");
-  hiddenRows.toggleClass("d-none");
-  const dstHeight = tablePanel.height();
-  //show rows animation
-  if (srcHeight < dstHeight) {
-    hiddenRows.toggleClass("d-none");
-  }
+  const tableParent = tablePanel.parent();
+  const showIcon = tableParent.find("svg");
+  const srcHeight = tableParent.height();
 
-  tablePanel.css("opacity", 0.5);
-  tablePanel.css("height", srcHeight);
-  tablePanel.animate(
+  tableParent.css('overflow-y', 'hidden');
+  tableParent.css("opacity", 0.5);
+  
+  hiddenRows.toggleClass("d-none");
+  
+  const dstHeight = tableParent.height();
+  tableParent.css("height", srcHeight);  
+  tableParent.animate(
     {
       height: dstHeight + "px",
       opacity: 1,
     },
-    500,
+    600,
     "swing",
-    function () {
-      tablePanel.css("height", "");
-      tablePanel.css("opacity", "");
-      if (srcHeight < dstHeight) {
-        hiddenRows.toggleClass("d-none");
-      }
-      console.log(showIcon)
+    function () {      
+      tableParent.css("opacity", "");
+      tableParent.css('overflow-y', '');
       showIcon.parent().toggleClass("d-none");
+      tableParent.css("height", "");
     }
-  );
+  );  
 }
 
 function showMore() {
