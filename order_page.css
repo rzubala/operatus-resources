@@ -42,10 +42,16 @@ td > a > div > div {
   position: relative;
 }
 
+.operatus-table-panel {
+  position: relative;
+}
+
 .icon-expand,
+.icon-expand-side,
 .icon-expand-d,
 .icon-expand-c,
 .icon-expand-e {
+  color: #505050;
   position: absolute;
   top: 12px;
   right: 12px;
@@ -57,9 +63,11 @@ td > a > div > div {
 }
 
 .icon-contract,
+.icon-contract-side,
 .icon-contract-d,
 .icon-contract-c,
 .icon-contract-e {
+  color: #505050;
   position: absolute;
   top: 12px;
   right: 12px;
