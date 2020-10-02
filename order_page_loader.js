@@ -34,8 +34,12 @@ function handlePanelFullScreen() {
   $(".icon-contract").on("click", expandPanelFull);
 
   $(".order-panel-C > .inner-panel > .operatus-table-panel").append(getExpandSideScreen());
-  $(".icon-expand-side").on("click", expandPanelSide);
-  $(".icon-contract-side").on("click", expandPanelSide);
+  $(".icon-expand-side").on("click", expandPanelSideCD);
+  $(".icon-contract-side").on("click", expandPanelSideCD);
+
+  $(".order-panel-D > .inner-panel > .operatus-table-panel").append(getExpandSideScreen());
+  $(".icon-expand-side").on("click", expandPanelSideDC);
+  $(".icon-contract-side").on("click", expandPanelSideDC);
 }
 
 function handlePanelShowMore() {
@@ -80,7 +84,15 @@ function expandPanelFull(event) {
   $(panel).find(".icon-contract").toggleClass("d-none");
 }
 
-function expandPanelSide(event) {
+function expandPanelSideCD(event) {
+  expandPanelSide(event, ".order-panel-C", ".order-panel-D")
+}
+
+function expandPanelSideDC(event) {
+  expandPanelSide(event, ".order-panel-D", ".order-panel-C")
+}
+
+function expandPanelSide(event, classFrom, classTo) {
   const icon = event.target;
   const columnPanel = icon.closest(".inner-panel");
   const panel = icon.closest(".operatus-table-panel");
@@ -91,7 +103,7 @@ function expandPanelSide(event) {
       $(this).toggleClass("d-none");
   });
   $(panel).toggleClass("d-none") 
-  expandPanelC(event);
+  expandPanelC(event, classFrom, classTo);
 
   tableShowMore($(panel));
 
@@ -182,24 +194,18 @@ function onShowMoreCommon(panel, name, postfix, offset) {
 }
 
 function registerExpandClick() {
-  $(".icon-expand-d").on("click", expandPanelD);
-  $(".icon-contract-d").on("click", expandPanelD);
-
-  $(".icon-expand-c").on("click", expandPanelC);
-  $(".icon-contract-c").on("click", expandPanelC);
-
   $(".icon-expand-e").on("click", expandPanelE);
   $(".icon-contract-e").on("click", expandPanelE);
 }
 
-function expandPanelC(event) {
+function expandPanelC(event, classFrom, classTo) {
   event.stopPropagation();
   event.stopImmediatePropagation();
 
-  var panelC = $(".order-panel-C");
-  var panelD = $(".order-panel-D");
-  var parentC = $(".order-panel-C").parent();
-  var parentD = $(".order-panel-D").parent();
+  var panelC = $(classFrom);
+  var panelD = $(classTo);
+  var parentC = $(classFrom).parent();
+  var parentD = $(classTo).parent();
 
   const srcWidth = panelC.width();
 
