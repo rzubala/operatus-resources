@@ -35,8 +35,14 @@ function handlePanelShowMore() {
 
   setTimeout(function() {
     $(".panel-show-more").toggleClass('panel-show-more-hover')
+    $(".panelE-show-more").toggleClass('panelE-show-more-hover')
+    $(".panelC-show-more").toggleClass('panelC-show-more-hover')
+    $(".panelD-show-more").toggleClass('panelD-show-more-hover')
     setTimeout(function() {
       $(".panel-show-more").toggleClass('panel-show-more-hover')
+      $(".panelE-show-more").toggleClass('panelE-show-more-hover')
+      $(".panelC-show-more").toggleClass('panelC-show-more-hover')
+      $(".panelD-show-more").toggleClass('panelD-show-more-hover')  
     }, 1500)
   }, 1000)
 }
