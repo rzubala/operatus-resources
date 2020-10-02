@@ -1,21 +1,82 @@
+const DEVEL = false;
+
 $(document).ready(function () {
-  $.get(window.location.pathname + "&data", function (data) {
-    $("#order-data").html(data);
+  if (DEVEL) {
+    console.log("***DEVELOPMENT***");
     onDataRetrieved();
-  }).fail(function () {
-      $("#loader").addClass("d-none");
-      $("#data-error").removeClass("d-none");
+  } else {
+    $.get(window.location.pathname + "&data", function (data) {
+      $("#order-data").html(data);
+      onDataRetrieved();
     })
-    .always(function () {
-      $("#loader").addClass("d-none");
-    });
+      .fail(function () {
+        $("#loader").addClass("d-none");
+        $("#data-error").removeClass("d-none");
+      })
+      .always(function () {
+        $("#loader").addClass("d-none");
+      });
+  }
 });
 
 function onDataRetrieved() {
   removeBeakLines();
   registerExpandClick();
   adjustCss();
-  showMore();
+  showMore(); //TO REMOVE
+  handlePanelShowMore();
+}
+
+function handlePanelShowMore() {
+  $(".operatus-row-hidden").addClass("d-none");
+  $(".operatus-expand-table").html(getShowMoreHtml());
+  $(".panel-show-more").on("click", onShowMore);
+  $(".panel-show-less").on("click", onShowMore);
+
+  setTimeout(function() {
+    $(".panel-show-more").toggleClass('panel-show-more-hover')
+    setTimeout(function() {
+      $(".panel-show-more").toggleClass('panel-show-more-hover')
+    }, 1500)
+  }, 1000)
+}
+
+function onShowMore(event) {
+  const icon = event.target;
+  const table = icon.closest(".operatus-table-panel");
+  if (table === undefined) {
+    return;
+  }
+  const tablePanel = $(table.children[0]);
+  const srcHeight = tablePanel.height();
+  const hiddenRows = tablePanel.find(".operatus-row-hidden");
+  const showIcon = tablePanel.parent().find("svg");
+  hiddenRows.toggleClass("d-none");
+  const dstHeight = tablePanel.height();
+  //show rows animation
+  if (srcHeight < dstHeight) {
+    hiddenRows.toggleClass("d-none");
+  }
+
+  tablePanel.css("opacity", 0.5);
+  tablePanel.css("height", srcHeight);
+  tablePanel.animate(
+    {
+      height: dstHeight + "px",
+      opacity: 1,
+    },
+    500,
+    "swing",
+    function () {
+      tablePanel.css("height", "");
+      tablePanel.css("opacity", "");
+      if (srcHeight < dstHeight) {
+        hiddenRows.toggleClass("d-none");
+      }
+      console.log(showIcon)
+      showIcon.parent().toggleClass("d-none");
+    }
+  );
 }
 
 function showMore() {
@@ -286,4 +347,19 @@ function removeBeakLines() {
 
 function vhToPx(vh) {
   return (vh * document.documentElement.clientHeight) / 100;
+}
+
+function getShowMoreHtml() {
+  return `<div class="panel-show-more">
+  <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-down-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+      <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+    </svg>
+</div>
+<div class="panel-show-less d-none">
+  <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+      <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
+    </svg>                                
+</div>`;
 }

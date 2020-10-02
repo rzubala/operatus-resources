@@ -110,9 +110,11 @@ td > a > div > div {
   }
 }
 
+.panel-show-more,
 .panelC-show-more,
 .panelD-show-more,
 .panelE-show-more,
+.panel-show-less,
 .panelC-show-less,
 .panelD-show-less,
 .panelE-show-less {
@@ -120,13 +122,16 @@ td > a > div > div {
   color: rgb(80, 80, 80);
   opacity: 0.3;
   transform: scale(0.8);
-  transition: opacity 0.5s ease-in-out;
-  transition: transform 0.25s ease-in-out;
+  transition: opacity 0.75s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 }
 
+.panel-show-more-hover,
+.panel-show-more:hover,
 .panelC-show-more:hover,
 .panelD-show-more:hover,
 .panelE-show-more:hover,
+.panel-show-less:hover,
 .panelC-show-less:hover,
 .panelD-show-less:hover,
 .panelE-show-less:hover {
