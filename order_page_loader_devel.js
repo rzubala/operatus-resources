@@ -32,15 +32,6 @@ function handlePanelFullScreen() {
   $(".operatus-expand-full").prepend(getExpandFullScreen());
   $(".icon-expand").on("click", expandPanelFull);
   $(".icon-contract").on("click", expandPanelFull);
-
-  //TODO should be removed C and D
-  $(".order-panel-C > .inner-panel > .operatus-table-panel").append(getExpandSideScreen());
-  $(".icon-expand-side").on("click", expandPanelSideCD);
-  $(".icon-contract-side").on("click", expandPanelSideCD);
-
-  $(".order-panel-D > .inner-panel > .operatus-table-panel").append(getExpandSideScreen());
-  $(".icon-expand-side").on("click", expandPanelSideDC);
-  $(".icon-contract-side").on("click", expandPanelSideDC);
 }
 
 function handlePanelShowMore() {
@@ -83,33 +74,6 @@ function expandPanelFull(event) {
   }
   $(panel).find(".icon-expand").toggleClass("d-lg-block");
   $(panel).find(".icon-contract").toggleClass("d-none");
-}
-
-function expandPanelSideCD(event) {
-  expandPanelSide(event, ".order-panel-C", ".order-panel-D")
-}
-
-function expandPanelSideDC(event) {
-  expandPanelSide(event, ".order-panel-D", ".order-panel-C")
-}
-
-function expandPanelSide(event, classFrom, classTo) {
-  const icon = event.target;
-  const columnPanel = icon.closest(".inner-panel");
-  const panel = icon.closest(".operatus-table-panel");
-  if (panel === undefined || columnPanel === undefined) {
-    return;
-  }
-  $(columnPanel).children().each(function () {
-      $(this).toggleClass("d-none");
-  });
-  $(panel).toggleClass("d-none") 
-  expandPanelC(event, classFrom, classTo);
-
-  tableShowMore($(panel));
-
-  $(panel).find(".icon-expand-side").toggleClass("d-lg-block");
-  $(panel).find(".icon-contract-side").toggleClass("d-none");
 }
 
 function onShowMore(event) {
@@ -399,7 +363,7 @@ function adjustCss() {
     .parent()
     .css({ height: "30px" });
 
-    $('[data-toggle="tooltip"]').tooltip()
+    //$('[data-toggle="tooltip"]').tooltip()
 }
 
 function removeBeakLines() {
