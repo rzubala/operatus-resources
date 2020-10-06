@@ -32,6 +32,7 @@ function handlePanelFullScreen() {
   $(".operatus-expand-full").prepend(getExpandFullScreen());
   $(".icon-expand").on("click", expandPanelFull);
   $(".icon-contract").on("click", expandPanelFull);
+  $(".operatus-expand-hidden").addClass("d-none");
 }
 
 function handlePanelShowMore() {
@@ -61,6 +62,11 @@ function expandPanelFull(event) {
   if (panel === undefined || columnPanel === undefined) {
     return;
   }
+  $(panel).find(".operatus-expand-hidden-3").toggleClass('d-none')
+  $(panel).find(".operatus-expand-hidden-3").toggleClass('col-lg-4')
+  $(panel).find(".operatus-expand-main-3").toggleClass('col-lg-4')
+  $(".order-panel-D").parent().toggleClass('pl-lg-1')
+
   $(columnPanel).children().each(function () {
       $(this).toggleClass("d-none");
   });
