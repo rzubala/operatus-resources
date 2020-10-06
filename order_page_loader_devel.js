@@ -157,39 +157,6 @@ function registerExpandClick() {
   $(".icon-contract-e").on("click", expandPanelE);
 }
 
-function expandPanelC(event, classFrom, classTo) {
-  event.stopPropagation();
-  event.stopImmediatePropagation();
-
-  var panelC = $(classFrom);
-  var panelD = $(classTo);
-  var parentC = $(classFrom).parent();
-  var parentD = $(classTo).parent();
-
-  const srcWidth = panelC.width();
-
-  var opacityFrom, opacityTo;
-  if (parentD.hasClass("d-none")) {
-    // from full view
-    parentC.removeClass("col-lg-12");
-    parentC.addClass("col-lg-4");
-    opacityFrom = 0;
-    opacityTo = 1;
-  } else {
-    // to full view
-    parentC.removeClass("col-lg-4");
-    parentC.addClass("col-lg-12");
-    opacityFrom = 1;
-    opacityTo = 0;
-  }
-
-  $(".icon-contract-c").toggleClass("d-none");
-  toggleExpandIcon();
-
-  animateOpacity(panelD, opacityFrom, opacityTo, parentD);
-  animateWidth(panelC, srcWidth);
-}
-
 function expandPanelE(event) {
   event.stopPropagation();
   event.stopImmediatePropagation();
@@ -363,7 +330,7 @@ function adjustCss() {
     .parent()
     .css({ height: "30px" });
 
-    //$('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="tooltip"]').tooltip()
 }
 
 function removeBeakLines() {
@@ -398,19 +365,6 @@ function getExpandFullScreen() {
   <div class="icon-contract d-none">
     <svg class="show-expand-svg" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrows-angle-contract" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707zM15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707z"></path>
-    </svg>
-  </div>`;
-}
-
-function getExpandSideScreen() {
-  return `<div class="icon-expand-side d-none d-lg-block">
-    <svg class="show-expand-side-svg" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-bar-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5z"></path>
-  </svg>
-  </div>
-    <div class="icon-contract-side d-none">
-      <svg class="show-expand-side-svg" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-bar-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5zM10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5z"></path>
     </svg>
   </div>`;
 }
