@@ -1,0 +1,159 @@
+html,
+body {
+  height: 100%;
+}
+
+table > tbody > tr {
+  height: 30px !important;
+}
+
+table > tbody > tr > td {
+  height: 30px !important;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 9pt !important;
+}
+
+table > tbody > tr > td > div {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 9pt !important;
+}
+
+td > a > div > div {
+  line-height: 2;
+}
+
+.h-300 {
+  height: 300px !important;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.order_panel {
+  position: relative;
+}
+
+.operatus-expand-full {
+  position: relative;
+}
+
+.operatus-table-panel {
+  position: relative;
+}
+
+.icon-expand,
+.icon-expand-side,
+.icon-expand-d,
+.icon-expand-c,
+.icon-expand-e {
+  color: #505050;
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 10;
+}
+
+.icon-expand-e-top {
+  top: 14px;
+}
+
+.icon-contract,
+.icon-contract-side,
+.icon-contract-d,
+.icon-contract-c,
+.icon-contract-e {
+  color: #505050;
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 10;
+}
+
+.inner_panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.order-panel-A {
+  /* background-color: blueviolet; */
+  overflow-y: auto;
+  height: 300px;
+}
+
+@media (min-width: 992px) {
+  .order-panel-B {
+    /* background-color: burlywood; */
+    overflow-y: auto;
+    height: 276px;
+  }
+}
+
+.order-panel-C {
+  /* background-color: bisque;
+    height: 30vh; */
+}
+
+.order-panel-D {
+  /* background-color: aqua;
+    height: 30vh; */
+}
+
+.order-panel-E {
+  overflow-y: auto;
+  /* background-color: aliceblue;
+    height: 200vh; */
+}
+
+@media (min-width: 992px) {
+  .overflow-panel {
+    max-height: calc(92vh - 300px);
+    overflow-y: hidden;
+  }
+}
+
+@media (min-width: 992px) {
+  .overflow-panel-E {
+    max-height: 92vh;
+    overflow-y: hidden;
+  }
+}
+
+.panel-show-more,
+.panelC-show-more,
+.panelD-show-more,
+.panelE-show-more,
+.panel-show-less,
+.panelC-show-less,
+.panelD-show-less,
+.panelE-show-less {
+  text-align: center;
+  color: rgb(80, 80, 80);
+  opacity: 0.3;
+  transform: scale(0.8);
+  transition: opacity 0.75s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+}
+
+.panel-show-more-hover,
+.panel-show-more:hover,
+.panelC-show-more:hover,
+.panelC-show-more-hover,
+.panelD-show-more:hover,
+.panelD-show-more-hover,
+.panelE-show-more:hover,
+.panelE-show-more-hover,
+.panel-show-less:hover,
+.panelC-show-less:hover,
+.panelD-show-less:hover,
+.panelE-show-less:hover {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.75s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+}
