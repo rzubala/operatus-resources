@@ -50,18 +50,7 @@ td > a > div > div {
 .icon-expand-side,
 .icon-expand-d,
 .icon-expand-c,
-.icon-expand-e {
-  color: #505050;
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  z-index: 10;
-}
-
-.icon-expand-e-top {
-  top: 14px;
-}
-
+.icon-expand-e,
 .icon-contract,
 .icon-contract-side,
 .icon-contract-d,
@@ -69,9 +58,13 @@ td > a > div > div {
 .icon-contract-e {
   color: #505050;
   position: absolute;
-  top: 10px;
+  top: 14px;
   right: 12px;
   z-index: 10;
+}
+
+.icon-expand-e-top {
+  top: 14px;
 }
 
 .inner_panel {

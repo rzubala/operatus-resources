@@ -32,7 +32,8 @@ function handlePanelFullScreen() {
   $(".operatus-expand-full").prepend(getExpandFullScreen());
   $(".icon-expand").on("click", expandPanelFull);
   $(".icon-contract").on("click", expandPanelFull);
-  $(".operatus-expand-hidden").addClass("d-none");
+  
+  $(".operatus-expand-hidden-3").addClass("d-none");
 }
 
 function handlePanelShowMore() {
@@ -73,11 +74,10 @@ function expandPanelFull(event) {
   $(panel).toggleClass("d-none")
   expandPanelD(event);
 
-  const tablePanel = $(panel).find(".operatus-table-panel");
-  const size = tablePanel.length
-  if (size > 0) {
-    tableShowMore($(tablePanel[size-1]));
-  }
+  const tablePanels = $(panel).find(".operatus-table-panel");
+  tablePanels.each(function() {
+    tableShowMore($(this))
+  })
   $(panel).find(".icon-expand").toggleClass("d-lg-block");
   $(panel).find(".icon-contract").toggleClass("d-none");
 }
@@ -103,6 +103,11 @@ function tableShowMore(tablePanel) {
   hiddenRows.toggleClass("d-none");
 
   const dstHeight = tableParent.height();
+  if (srcHeight === 0 && dstHeight === 0) {
+    showIcon.parent().toggleClass("d-none");
+    return
+  }  
+
   tableParent.css("height", srcHeight);
   tableParent.animate(
     {
@@ -288,7 +293,7 @@ function animateWidth(panel, srcWidth) {
       width: dstWidth + "px",
       opacity: 1,
     },
-    200,
+    400,
     "swing",
     function () {
       panel.css("width", "100%");
