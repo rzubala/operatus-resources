@@ -108,6 +108,8 @@ function tableShowMore(tablePanel) {
   const dstHeight = tableParent.height();
   if (srcHeight === 0 && dstHeight === 0) {
     showIcon.parent().toggleClass("d-none");
+    tableParent.css("opacity", "");
+    tableParent.css("overflow-y", "");
     return
   }  
 
