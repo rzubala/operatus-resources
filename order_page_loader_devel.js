@@ -93,6 +93,9 @@ function onShowMore(event) {
 
 function tableShowMore(tablePanel) {  
   const hiddenRows = tablePanel.find(".operatus-row-hidden");
+  if (hiddenRows.length === 0) {
+    return
+  }
   const tableParent = tablePanel.parent();
   const showIcon = tableParent.find(".show-more-svg");
   const srcHeight = tableParent.height();
