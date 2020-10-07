@@ -34,6 +34,7 @@ function handlePanelFullScreen() {
   $(".icon-contract").on("click", expandPanelFull);
   
   $(".operatus-expand-hidden-3").addClass("d-lg-none");
+  $(".operatus-expand-hidden-12").addClass("d-lg-none");
 }
 
 function handlePanelShowMore() {
@@ -65,6 +66,7 @@ function expandPanelFull(event) {
   }
   $(panel).find(".operatus-expand-hidden-3").toggleClass('d-lg-none')
   $(panel).find(".operatus-expand-hidden-3").toggleClass('col-lg-4')
+  $(panel).find(".operatus-expand-hidden-12").toggleClass('d-lg-none')
   $(panel).find(".operatus-expand-main-3").toggleClass('col-lg-4')
   $(".order-panel-D").parent().toggleClass('pl-lg-1')
 
