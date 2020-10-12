@@ -37,6 +37,7 @@ function handlePanelFullScreen() {
   $(".operatus-expand-hidden-12").addClass("d-lg-none");
   
   $(".sub-col-A > .operatus-expand-main").parent().toggleClass('col-lg-4')
+  $(".sub-col-B > .operatus-expand-main").parent().toggleClass('col-lg-4')  
 }
 
 function handlePanelShowMore() {
@@ -76,6 +77,7 @@ function expandPanelFull(event) {
   $(panel).find(".operatus-expand-main-hidden").toggleClass('col-lg-4')
 
   $(".sub-col-A > .operatus-expand-main").parent().toggleClass('col-lg-4')
+  $(".sub-col-B > .operatus-expand-main").parent().toggleClass('col-lg-4')
 
   $(".order-panel-D").parent().toggleClass('pl-lg-1')
 
