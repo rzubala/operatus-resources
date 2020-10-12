@@ -67,7 +67,12 @@ function expandPanelFull(event) {
   $(panel).find(".operatus-expand-hidden-3").toggleClass('d-lg-none')
   $(panel).find(".operatus-expand-hidden-3").toggleClass('col-lg-4')
   $(panel).find(".operatus-expand-hidden-12").toggleClass('d-lg-none')
+  
   $(panel).find(".operatus-expand-main-3").toggleClass('col-lg-4')
+  
+  $(panel).find(".operatus-expand-main-hidden").toggleClass('d-lg-none')
+  $(panel).find(".operatus-expand-main-hidden").toggleClass('col-lg-4')
+
   $(".order-panel-D").parent().toggleClass('pl-lg-1')
 
   $(columnPanel).children().each(function () {
