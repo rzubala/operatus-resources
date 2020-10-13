@@ -26,6 +26,22 @@ td > a > div > div {
   line-height: 2;
 }
 
+.sub-col-title {
+  text-transform: uppercase;
+  background-color: rgb(142, 170, 219);
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  border: 1px solid #d0d0d0;
+  height: 30px;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 .h-300 {
   height: 300px !important;
 }
