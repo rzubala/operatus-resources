@@ -40,6 +40,8 @@ td > a > div > div {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  font-size: 9pt;
+  margin: 5px auto 5px auto;
 }
 
 .h-300 {
