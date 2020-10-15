@@ -1,4 +1,4 @@
-const DEVEL = false;
+const DEVEL = true;
 
 $(document).ready(function () {
   if (DEVEL) {
@@ -77,19 +77,30 @@ function expandSubColumnFull(event) {
     return;
   }
   const srcWidth = $(panel).width()
-  $(subColumnC).siblings('.sub-col-A').toggleClass('d-none')
-  $(subColumnC).siblings('.sub-col-B').toggleClass('d-none')
-  $(subColumnC).toggleClass('col-lg-4')
-  $(subColumnC).toggleClass('pl-lg-1')
-  $(subColumnC).children().each(function () {
+
+  if ($(panel).hasClass('panel-expanded')) {
+    animateWidth($(panel), srcWidth, srcWidth/3, function() {
+      handleSubColumnCExpand($(subColumnC), $(panel))  
+    });
+  } else {
+    handleSubColumnCExpand($(subColumnC), $(panel))
+    animateWidth($(panel), srcWidth);
+  }
+}
+
+function handleSubColumnCExpand(subColumnC, panel) {
+  subColumnC.siblings('.sub-col-A').toggleClass('d-none')
+  subColumnC.siblings('.sub-col-B').toggleClass('d-none')
+  subColumnC.toggleClass('col-lg-4')
+  subColumnC.toggleClass('pl-lg-1')
+  subColumnC.children().each(function () {
     $(this).toggleClass("d-none");
   });
-  $(panel).toggleClass("d-none")
+  panel.toggleClass("d-none")
+  panel.toggleClass("panel-expanded")
 
-  animateWidth($(panel), srcWidth);
-
-  $(panel).find(".icon-expand-2").toggleClass("d-lg-block");
-  $(panel).find(".icon-contract-2").toggleClass("d-none");
+  panel.find(".icon-expand-2").toggleClass("d-lg-block");
+  panel.find(".icon-contract-2").toggleClass("d-none");
 }
 
 function expandPanelFull(event) {
@@ -336,8 +347,11 @@ function animateOpacity(panel, from, to, parent) {
   );
 }
 
-function animateWidth(panel, srcWidth) {
-  const dstWidth = panel.width();
+function animateWidth(panel, srcWidth, forceDstWidth, doneFunction) {
+  var dstWidth = panel.width();
+  if (forceDstWidth !== undefined) {
+    dstWidth = forceDstWidth
+  }
   panel.css("opacity", 0.5);
   panel.css("width", srcWidth);
   panel.animate(
@@ -349,6 +363,9 @@ function animateWidth(panel, srcWidth) {
     "swing",
     function () {
       panel.css("width", "100%");
+      if (doneFunction !== undefined) {
+        doneFunction()
+      }
     }
   );
 }
