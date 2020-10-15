@@ -1,4 +1,4 @@
-const DEVEL = true;
+const DEVEL = false;
 
 $(document).ready(function () {
   if (DEVEL) {
