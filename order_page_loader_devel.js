@@ -26,10 +26,11 @@ function onDataRetrieved() {
   showMoreE();
   handlePanelShowMore();
   handlePanelFullScreen();
+  handleSubColumnFullScreen();
 }
 
 function handlePanelFullScreen() {
-  $(".operatus-expand-full").prepend(getExpandFullScreen());
+  $(".operatus-expand-full").prepend(getExpandFullScreen('icon-expand', 'icon-contract'));
   $(".icon-expand").on("click", expandPanelFull);
   $(".icon-contract").on("click", expandPanelFull);
   
@@ -39,6 +40,13 @@ function handlePanelFullScreen() {
   $(".sub-col-A > .operatus-expand-main").parent().toggleClass('col-lg-4')
   $(".sub-col-B > .operatus-expand-main").parent().toggleClass('col-lg-4')  
   $(".sub-col-C > .operatus-expand-main").parent().toggleClass('col-lg-4')
+}
+
+function handleSubColumnFullScreen() {
+  $(".operatus-expand-sub-col-full > .operatus-table-panel").append(getExpandFullScreen('icon-expand-2', 'icon-contract-2'));
+
+  $(".icon-expand-2").on("click", expandSubColumnFull);
+  $(".icon-contract-2").on("click", expandSubColumnFull);
 }
 
 function handlePanelShowMore() {
@@ -59,6 +67,29 @@ function handlePanelShowMore() {
       $(".panelD-show-more").toggleClass("panelD-show-more-hover");
     }, 1500);
   }, 1000);
+}
+
+function expandSubColumnFull(event) {
+  const icon = event.target;
+  const panel = icon.closest(".operatus-expand-sub-col-full");
+  const subColumnC = icon.closest(".sub-col-C");
+  if (panel === undefined || subColumnC === undefined) {
+    return;
+  }
+  const srcWidth = $(panel).width()
+  $(subColumnC).siblings('.sub-col-A').toggleClass('d-none')
+  $(subColumnC).siblings('.sub-col-B').toggleClass('d-none')
+  $(subColumnC).toggleClass('col-lg-4')
+  $(subColumnC).toggleClass('pl-lg-1')
+  $(subColumnC).children().each(function () {
+    $(this).toggleClass("d-none");
+  });
+  $(panel).toggleClass("d-none")
+
+  animateWidth($(panel), srcWidth);
+
+  $(panel).find(".icon-expand-2").toggleClass("d-lg-block");
+  $(panel).find(".icon-contract-2").toggleClass("d-none");
 }
 
 function expandPanelFull(event) {
@@ -314,7 +345,7 @@ function animateWidth(panel, srcWidth) {
       width: dstWidth + "px",
       opacity: 1,
     },
-    400,
+    500,
     "swing",
     function () {
       panel.css("width", "100%");
@@ -388,13 +419,13 @@ function getShowMoreHtml() {
 </div>`;
 }
 
-function getExpandFullScreen() {
-  return `<div class="icon-expand d-none d-lg-block">
+function getExpandFullScreen(classExpand, classContract) {
+  return `<div class="${classExpand} d-none d-lg-block">
     <svg class="show-expand-svg" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrows-angle-expand" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707zm4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707z"></path>
     </svg>
   </div>
-  <div class="icon-contract d-none">
+  <div class="${classContract} d-none">
     <svg class="show-expand-svg" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrows-angle-contract" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707zM15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707z"></path>
     </svg>
