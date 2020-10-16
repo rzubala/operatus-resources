@@ -32,7 +32,7 @@ function onDataRetrieved() {
 
 function updateExhibitorColor() {
   const rgb = $('#coloRgb').val()
-  if (rgb === undefined) {
+  if (rgb === undefined || !rgb || 0 === rgb.length) {
     return;
   }
   $('.sub-col-title').css('background-color', '#' + rgb)
