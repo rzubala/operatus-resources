@@ -170,3 +170,8 @@ td > a > div > div {
   transition: opacity 0.75s ease-in-out;
   transition: transform 0.5s ease-in-out;
 }
+
+#loader > div > div:nth-child(1) > div > img {
+  object-fit: cover;
+  height: 20vh;
+}
