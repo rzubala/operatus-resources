@@ -27,6 +27,15 @@ function onDataRetrieved() {
   handlePanelShowMore();
   handlePanelFullScreen();
   handleSubColumnFullScreen();
+  updateExhibitorColor();
+}
+
+function updateExhibitorColor() {
+  const rgb = $('#coloRgb').val()
+  if (rgb === undefined) {
+    return;
+  }
+  $('.sub-col-title').css('background-color', '#' + rgb)
 }
 
 function handlePanelFullScreen() {
