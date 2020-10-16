@@ -31,7 +31,7 @@ function onDataRetrieved() {
 }
 
 function updateExhibitorColor() {
-  $('.operatus-table-title').css('background-color', '#E0E0E0');
+  //$('.operatus-table-title').css('background-color', '#E0E0E0');
   const rgb = $('#coloRgb').val()
   if (rgb === undefined || !rgb || 0 === rgb.length) {
     return;
