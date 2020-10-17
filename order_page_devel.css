@@ -178,8 +178,8 @@ td > a > div > div {
 
 @media (max-width: 600px) {
   #loader > div > div:nth-child(1) > div > img {
-    object-fit: cover;
     width: 90vw;
+    height: auto;
   }  
 
   #loader > div > div:nth-child(2) > div > div > div {
