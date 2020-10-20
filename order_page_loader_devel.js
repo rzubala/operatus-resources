@@ -42,6 +42,12 @@ function updateExhibitorColor() {
 
 function handlePanelExpandSide() {
   //$(".panel-col-title").prepend(getExpandSideScreen());
+
+  const panels = ($('.panel-col-title').closest('.order-panel-D'))
+  for (const p of panels) {    
+    const row = $(p).find('.panel-col-title')
+    $(row).parent().addClass('pr-lg-1')
+  }  
 }
 
 function handlePanelFullScreen() {
