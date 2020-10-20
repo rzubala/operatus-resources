@@ -36,8 +36,7 @@ function updateExhibitorColor() {
   if (rgb === undefined || !rgb || 0 === rgb.length) {
     return;
   }
-  $('.sub-col-title').css('background-color', '#' + rgb)
-  $('.panel-col-title').css('background-color', '#' + rgb)
+  $('.sub-col-title').css('background-color', '#' + rgb) 
 }
 
 function handlePanelFullScreen() {
