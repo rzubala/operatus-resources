@@ -88,6 +88,12 @@ td > a > div > div {
   top: 14px;
 }
 
+.panel-col-title > .icon-expand-side,
+.panel-col-title > .icon-contract-side {
+  top: 12px;
+  right: 5px;
+}
+
 .inner_panel {
   position: absolute;
   top: 0;
