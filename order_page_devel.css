@@ -26,7 +26,8 @@ td > a > div > div {
   line-height: 2;
 }
 
-.sub-col-title {
+.sub-col-title,
+.panel-col-title {
   text-transform: uppercase;
   background-color: #E0E0E0;
   color: rgb(0, 0, 0);
