@@ -292,13 +292,13 @@ function expandPanelD(event) {
   var parentB = $(".order-panel-B").parent();
   var parentC = $(".order-panel-C").parent();
   var parentD = $(".order-panel-D").parent();
-  var parentE = $(".order-panel-E").parent().detach();
-
+  var parentE = $(".order-panel-E").parent();
+  const panelA = $(".order-panel-A");
+  const panelB = $(".order-panel-B");
+  const panelC = $(".order-panel-C");
+  const panelE = $(".order-panel-E");
   var panelD = $(".order-panel-D");
   const srcWidth = panelD.width();
-
-  var mainRow = $(".main-row");
-  var firstRow = $(".first-row");
   var firstCol = $(".first-col");
 
   if (parentC.hasClass("d-none")) {
@@ -308,17 +308,6 @@ function expandPanelD(event) {
 
     firstCol.removeClass("col-lg-12");
     firstCol.addClass("col-lg-9");
-
-    firstCol.removeClass("col-lg-12");
-    firstCol.addClass("col-lg-9");
-    mainRow.append(parentE);
-    var panelE = $(".order-panel-E");
-
-    parentA.removeClass("col-lg-6");
-    parentA.addClass("col-lg-8");
-    parentB.removeClass("col-lg-3");
-    parentB.addClass("col-lg-4");
-    panelE.removeClass("h-300");
   } else {
     // to full view
     parentD.removeClass("col-lg-8");
@@ -326,16 +315,13 @@ function expandPanelD(event) {
 
     firstCol.removeClass("col-lg-9");
     firstCol.addClass("col-lg-12");
-    firstRow.append(parentE);
-    var panelE = $(".order-panel-E");
-
-    parentA.removeClass("col-lg-8");
-    parentA.addClass("col-lg-6");
-    parentB.removeClass("col-lg-4");
-    parentB.addClass("col-lg-3");
-    panelE.addClass("h-300");
   }
-  parentC.toggleClass("d-none");
+  animateOpacity(panelA, 0, 1, undefined)
+  animateOpacity(panelB, 0, 1, parentB)
+  animateOpacity(panelC, 0, 1, parentC)
+  animateOpacity(panelE, 0, 1, parentE)
+
+  parentA.toggleClass('col-lg-8');
   $(".icon-contract-d").toggleClass("d-none");
   toggleExpandIcon();
 
@@ -343,16 +329,21 @@ function expandPanelD(event) {
 }
 
 function animateOpacity(panel, from, to, parent) {
+  if (parent && from === 0) {
+    parent.toggleClass("d-none");
+  }
   panel.css("opacity", from);
   panel.animate(
     {
       opacity: to,
     },
-    300,
+    400,
     "swing",
     function () {
+      if (parent && to === 0) {
+        parent.toggleClass("d-none");
+      }
       panel.css("opacity", 1);
-      parent.toggleClass("d-none");
     }
   );
 }
