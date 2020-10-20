@@ -41,7 +41,8 @@ function updateExhibitorColor() {
 }
 
 function handlePanelExpandSide() {
-  $(".panel-col-title").prepend(getExpandSideScreen());
+  //TODO
+  //$(".panel-col-title").prepend(getExpandSideScreen());
 
   const panels = ($('.panel-col-title').closest('.order-panel-D'))
   for (const p of panels) {    
