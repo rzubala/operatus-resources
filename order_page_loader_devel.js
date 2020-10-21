@@ -41,8 +41,9 @@ function updateExhibitorColor() {
 }
 
 function handlePanelExpandSide() {
-  //TODO
-  //$(".panel-col-title").prepend(getExpandSideScreen());
+  $(".panel-col-title").prepend(getExpandSideScreen());
+  $(".icon-expand-side").on("click", expandPanelSide);
+  $(".icon-contract-side").on("click", expandPanelSide);
 
   const panels = ($('.panel-col-title').closest('.order-panel-D'))
   for (const p of panels) {    
@@ -123,6 +124,43 @@ function handleSubColumnCExpand(subColumnC, panel) {
 
   panel.find(".icon-expand-2").toggleClass("d-lg-block");
   panel.find(".icon-contract-2").toggleClass("d-none");
+}
+
+function expandPanelSide(event) {
+  const icon = event.target;
+  const panel = icon.closest(".panel-col-title");
+  const columnPanel = icon.closest(".inner-panel");
+  if (panel === undefined || columnPanel === undefined) {
+    return;
+  }
+  const isC = $(columnPanel).parent().hasClass('order-panel-C')
+  console.log('C', isC)
+
+  const parentC = $(".order-panel-C").parent();
+  const parentD = $(".order-panel-D").parent();
+  const panelC = $(".order-panel-C");
+  const panelD = $(".order-panel-D");
+  var srcWidth = 0
+  var srcPanel = undefined
+  var otherPanel = undefined
+  if (isC) {
+    srcWidth = parentC.width()
+    srcPanel = panelC
+    otherPanel = panelD
+    parentC.toggleClass('col-lg-4')
+    parentD.toggleClass('d-none')
+  } else {
+    srcWidth = parentD.width()
+    srcPanel = panelD
+    otherPanel = panelC
+    parentD.toggleClass('col-lg-8')
+    parentC.toggleClass('d-none')
+  } 
+  animateOpacity($(otherPanel), 0, 1, undefined)
+  animateWidth($(srcPanel), srcWidth, $(srcPanel).width());
+
+  $(panel).find(".icon-expand-side").toggleClass("d-lg-block");
+  $(panel).find(".icon-contract-side").toggleClass("d-none");
 }
 
 function expandPanelFull(event) {
@@ -365,6 +403,7 @@ function animateWidth(panel, srcWidth, forceDstWidth, doneFunction) {
   if (forceDstWidth !== undefined) {
     dstWidth = forceDstWidth
   }
+  console.log(panel, srcWidth, dstWidth)
   panel.css("opacity", 0.5);
   panel.css("width", srcWidth);
   panel.animate(
@@ -375,7 +414,7 @@ function animateWidth(panel, srcWidth, forceDstWidth, doneFunction) {
     500,
     "swing",
     function () {
-      panel.css("width", "100%");
+      panel.css("width", "auto");
       if (doneFunction !== undefined) {
         doneFunction()
       }
