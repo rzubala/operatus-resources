@@ -159,8 +159,9 @@ function expandPanelSide(event) {
   animateOpacity($(otherPanel), 0, 1, undefined)
   animateWidth($(srcPanel), srcWidth, $(srcPanel).width());
 
-  $(panel).find(".icon-expand-side").toggleClass("d-lg-block");
   $(panel).find(".icon-contract-side").toggleClass("d-none");
+  $(".icon-expand-side").toggleClass("d-lg-block");
+  (".icon-expand").toggleClass("d-lg-block");
 }
 
 function expandPanelFull(event) {
