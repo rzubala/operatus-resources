@@ -161,7 +161,7 @@ function expandPanelSide(event) {
 
   $(panel).find(".icon-contract-side").toggleClass("d-none");
   $(".icon-expand-side").toggleClass("d-lg-block");
-  (".icon-expand").toggleClass("d-lg-block");
+  $(".icon-expand").toggleClass("d-lg-block");
 }
 
 function expandPanelFull(event) {
