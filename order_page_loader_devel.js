@@ -29,8 +29,16 @@ function onDataRetrieved() {
   handlePanelExpandSide();
   handleSubColumnFullScreen();
   updateExhibitorColor();
+  reloadOpenStreetMaps();  
+}
 
-  $('#osm-place').attr("src", $('#osm-place').attr("src"));
+function reloadOpenStreetMaps() {
+  setTimeout(function () {
+    const maps = $('#osm-place')
+    for (const map of maps) {
+      $(map).attr("src", $(map).attr("src"));
+    }
+  }, 1000)  
 }
 
 function updateExhibitorColor() {
