@@ -38,7 +38,7 @@ function updateProgess(up) {
         updateProgess(!up);
       }
     }
-  }, 100);
+  }, 200);
 }
 
 function onDataRetrieved() {
