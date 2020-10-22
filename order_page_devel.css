@@ -195,10 +195,10 @@ td > a > div > div {
   }  
 }
 
-#vessel {
+#vessel {  
   position: relative;
-  -webkit-animation: vesselAnimation 15s infinite  normal linear;
-  animation: vesselAnimation 15s infinite  normal linear;
+  -webkit-animation: vesselAnimation 20s infinite  normal linear;
+  animation: vesselAnimation 20s infinite  normal linear;
 }
 @-webkit-keyframes vesselAnimation {
   0% {

@@ -1,11 +1,11 @@
-const DEVEL = true;
+const DEVEL = false;
 
 $(document).ready(function () {
   handleLoader();
 
   if (DEVEL) {
     console.log("***DEVELOPMENT***");
-    //onDataRetrieved();
+    onDataRetrieved();
   } else {
     $.get(window.location.pathname + "&data", function (data) {
       $("#order-data").html(data);
@@ -38,7 +38,7 @@ function updateProgess(up) {
         updateProgess(!up);
       }
     }
-  }, 200);
+  }, 100);
 }
 
 function onDataRetrieved() {
