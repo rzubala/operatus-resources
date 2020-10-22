@@ -15,14 +15,14 @@ table > tbody > tr > td {
   font-size: 9pt !important;
 }
 
+table > tbody > tr > td > span {
+  font-size: 9pt !important;
+}
+
 table > tbody > tr > td > div {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  font-size: 9pt !important;
-}
-
-table > tbody > tr > td > span {
   font-size: 9pt !important;
 }
 
