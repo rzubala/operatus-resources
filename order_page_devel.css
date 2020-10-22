@@ -194,3 +194,25 @@ td > a > div > div {
     width: 90vw !important;
   }  
 }
+
+#vessel {
+  position: relative;
+  -webkit-animation: vesselAnimation 15s infinite  normal linear;
+  animation: vesselAnimation 15s infinite  normal linear;
+}
+@-webkit-keyframes vesselAnimation {
+  0% {
+      left:0px;
+  }
+  100% {
+      left: 100vw;
+  }
+}
+@keyframes vesselAnimation {
+  0% {
+    left:0px;
+  }
+  100% {
+    left: 100vw;
+  }
+}

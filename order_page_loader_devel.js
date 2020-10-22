@@ -1,11 +1,11 @@
-const DEVEL = false;
+const DEVEL = true;
 
 $(document).ready(function () {
   handleLoader();
 
   if (DEVEL) {
     console.log("***DEVELOPMENT***");
-    onDataRetrieved();
+    //onDataRetrieved();
   } else {
     $.get(window.location.pathname + "&data", function (data) {
       $("#order-data").html(data);
