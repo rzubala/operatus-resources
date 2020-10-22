@@ -51,7 +51,7 @@ function updateExhibitorColor() {
     return;
   }
   $(".sub-col-title").css("background-color", "#" + rgb);
-  $('.operatus-table-title').css('background-color', "#" + rgb);
+  $(".panel-col-title").css('background-color', "#" + rgb);
 }
 
 function handlePanelExpandSide() {
