@@ -29,6 +29,8 @@ function onDataRetrieved() {
   handlePanelExpandSide();
   handleSubColumnFullScreen();
   updateExhibitorColor();
+
+  $('#osm-place').attr("src", $('#osm-place').attr("src"));
 }
 
 function updateExhibitorColor() {
