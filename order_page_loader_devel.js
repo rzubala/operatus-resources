@@ -1,6 +1,8 @@
 const DEVEL = false;
 
 $(document).ready(function () {
+  handleLoader();
+
   if (DEVEL) {
     console.log("***DEVELOPMENT***");
     onDataRetrieved();
@@ -18,6 +20,26 @@ $(document).ready(function () {
       });
   }
 });
+
+function handleLoader() {
+  updateProgess(true);
+}
+
+function updateProgess(up) {
+  var i = 0;
+  var counterBack = setInterval(function () {
+    i++;
+    if (i <= 100) {
+      const width = up ? i : 100 - i
+      $(".progress-bar").css("width", width + "%");
+    } else {
+      clearInterval(counterBack);
+      if (!$("#loader").hasClass("d-none")) {
+        updateProgess(!up);
+      }
+    }
+  }, 100);
+}
 
 function onDataRetrieved() {
   removeBeakLines();
@@ -41,7 +63,7 @@ function reloadOpenStreetMaps() {
   }, 1000);
 
   $("#osm-place").parent().prepend(getFullMap());
-  $(".icon-full-map").on('click', showFullMap)
+  $(".icon-full-map").on("click", showFullMap);
 }
 
 function updateExhibitorColor() {
@@ -51,7 +73,7 @@ function updateExhibitorColor() {
     return;
   }
   $(".sub-col-title").css("background-color", "#" + rgb);
-  $(".panel-col-title").css('background-color', "#" + rgb);
+  $(".panel-col-title").css("background-color", "#" + rgb);
 }
 
 function handlePanelExpandSide() {
@@ -150,9 +172,9 @@ function showFullMap(event) {
   if (panel === undefined) {
     return;
   }
-  const url = $(panel).find('#osm-place').attr("srcfull");
+  const url = $(panel).find("#osm-place").attr("srcfull");
   if (url) {
-    window.open(url, '_blank');
+    window.open(url, "_blank");
   }
 }
 
@@ -163,7 +185,7 @@ function expandPanelSide(event) {
   if (panel === undefined || columnPanel === undefined) {
     return;
   }
-  const isC = $(columnPanel).parent().hasClass("order-panel-C");  
+  const isC = $(columnPanel).parent().hasClass("order-panel-C");
   const parentC = $(".order-panel-C").parent();
   const parentD = $(".order-panel-D").parent();
   const panelC = $(".order-panel-C");

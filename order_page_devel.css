@@ -190,7 +190,7 @@ td > a > div > div {
     height: auto;
   }  
 
-  #loader > div > div:nth-child(2) > div > div > div {
+  #loader > div > div:nth-child(2) > div > div {
     width: 90vw !important;
   }  
 }
