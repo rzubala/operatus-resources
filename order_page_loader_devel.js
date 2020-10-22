@@ -29,25 +29,28 @@ function onDataRetrieved() {
   handlePanelExpandSide();
   handleSubColumnFullScreen();
   updateExhibitorColor();
-  reloadOpenStreetMaps();  
+  reloadOpenStreetMaps();
 }
 
 function reloadOpenStreetMaps() {
   setTimeout(function () {
-    const maps = $('#osm-place')
+    const maps = $("#osm-place");
     for (const map of maps) {
       $(map).attr("src", $(map).attr("src"));
     }
-  }, 1000)  
+  }, 1000);
+
+  $("#osm-place").parent().prepend(getFullMap());
+  $(".icon-full-map").on('click', showFullMap)
 }
 
 function updateExhibitorColor() {
   //$('.operatus-table-title').css('background-color', '#E0E0E0');
-  const rgb = $('#coloRgb').val()
+  const rgb = $("#coloRgb").val();
   if (rgb === undefined || !rgb || 0 === rgb.length) {
     return;
   }
-  $('.sub-col-title').css('background-color', '#' + rgb) 
+  $(".sub-col-title").css("background-color", "#" + rgb);
 }
 
 function handlePanelExpandSide() {
@@ -55,28 +58,32 @@ function handlePanelExpandSide() {
   $(".icon-expand-side").on("click", expandPanelSide);
   $(".icon-contract-side").on("click", expandPanelSide);
 
-  const panels = ($('.panel-col-title').closest('.order-panel-D'))
-  for (const p of panels) {    
-    const row = $(p).find('.panel-col-title')
-    $(row).parent().addClass('pr-lg-1')
-  }  
+  const panels = $(".panel-col-title").closest(".order-panel-D");
+  for (const p of panels) {
+    const row = $(p).find(".panel-col-title");
+    $(row).parent().addClass("pr-lg-1");
+  }
 }
 
 function handlePanelFullScreen() {
-  $(".operatus-expand-full").prepend(getExpandFullScreen('icon-expand', 'icon-contract'));
+  $(".operatus-expand-full").prepend(
+    getExpandFullScreen("icon-expand", "icon-contract")
+  );
   $(".icon-expand").on("click", expandPanelFull);
   $(".icon-contract").on("click", expandPanelFull);
-  
+
   $(".operatus-expand-hidden-3").addClass("d-lg-none");
   $(".operatus-expand-hidden-12").addClass("d-lg-none");
-  
-  $(".sub-col-A > .operatus-expand-main").parent().toggleClass('col-lg-4')
-  $(".sub-col-B > .operatus-expand-main").parent().toggleClass('col-lg-4')  
-  $(".sub-col-C > .operatus-expand-main").parent().toggleClass('col-lg-4')
+
+  $(".sub-col-A > .operatus-expand-main").parent().toggleClass("col-lg-4");
+  $(".sub-col-B > .operatus-expand-main").parent().toggleClass("col-lg-4");
+  $(".sub-col-C > .operatus-expand-main").parent().toggleClass("col-lg-4");
 }
 
 function handleSubColumnFullScreen() {
-  $(".operatus-expand-sub-col-full > .operatus-table-panel").append(getExpandFullScreen('icon-expand-2', 'icon-contract-2'));
+  $(".operatus-expand-sub-col-full > .operatus-table-panel").append(
+    getExpandFullScreen("icon-expand-2", "icon-contract-2")
+  );
 
   $(".icon-expand-2").on("click", expandSubColumnFull);
   $(".icon-contract-2").on("click", expandSubColumnFull);
@@ -109,31 +116,35 @@ function expandSubColumnFull(event) {
   if (panel === undefined || subColumnC === undefined) {
     return;
   }
-  const srcWidth = $(panel).width()
+  const srcWidth = $(panel).width();
 
-  if ($(panel).hasClass('panel-expanded')) {
-    animateWidth($(panel), srcWidth, srcWidth/3, function() {
-      handleSubColumnCExpand($(subColumnC), $(panel))  
+  if ($(panel).hasClass("panel-expanded")) {
+    animateWidth($(panel), srcWidth, srcWidth / 3, function () {
+      handleSubColumnCExpand($(subColumnC), $(panel));
     });
   } else {
-    handleSubColumnCExpand($(subColumnC), $(panel))
+    handleSubColumnCExpand($(subColumnC), $(panel));
     animateWidth($(panel), srcWidth);
   }
 }
 
 function handleSubColumnCExpand(subColumnC, panel) {
-  subColumnC.siblings('.sub-col-A').toggleClass('d-none')
-  subColumnC.siblings('.sub-col-B').toggleClass('d-none')
-  subColumnC.toggleClass('col-lg-4')
-  subColumnC.toggleClass('pl-lg-1')
+  subColumnC.siblings(".sub-col-A").toggleClass("d-none");
+  subColumnC.siblings(".sub-col-B").toggleClass("d-none");
+  subColumnC.toggleClass("col-lg-4");
+  subColumnC.toggleClass("pl-lg-1");
   subColumnC.children().each(function () {
     $(this).toggleClass("d-none");
   });
-  panel.toggleClass("d-none")
-  panel.toggleClass("panel-expanded")
+  panel.toggleClass("d-none");
+  panel.toggleClass("panel-expanded");
 
   panel.find(".icon-expand-2").toggleClass("d-lg-block");
   panel.find(".icon-contract-2").toggleClass("d-none");
+}
+
+function showFullMap(event) {
+  const icon = event.target;
 }
 
 function expandPanelSide(event) {
@@ -143,30 +154,28 @@ function expandPanelSide(event) {
   if (panel === undefined || columnPanel === undefined) {
     return;
   }
-  const isC = $(columnPanel).parent().hasClass('order-panel-C')
-  console.log('C', isC)
-
+  const isC = $(columnPanel).parent().hasClass("order-panel-C");  
   const parentC = $(".order-panel-C").parent();
   const parentD = $(".order-panel-D").parent();
   const panelC = $(".order-panel-C");
   const panelD = $(".order-panel-D");
-  var srcWidth = 0
-  var srcPanel = undefined
-  var otherPanel = undefined
+  var srcWidth = 0;
+  var srcPanel = undefined;
+  var otherPanel = undefined;
   if (isC) {
-    srcWidth = parentC.width()
-    srcPanel = panelC
-    otherPanel = panelD
-    parentC.toggleClass('col-lg-4')
-    parentD.toggleClass('d-none')
+    srcWidth = parentC.width();
+    srcPanel = panelC;
+    otherPanel = panelD;
+    parentC.toggleClass("col-lg-4");
+    parentD.toggleClass("d-none");
   } else {
-    srcWidth = parentD.width()
-    srcPanel = panelD
-    otherPanel = panelC
-    parentD.toggleClass('col-lg-8')
-    parentC.toggleClass('d-none')
-  } 
-  animateOpacity($(otherPanel), 0, 1, undefined)
+    srcWidth = parentD.width();
+    srcPanel = panelD;
+    otherPanel = panelC;
+    parentD.toggleClass("col-lg-8");
+    parentC.toggleClass("d-none");
+  }
+  animateOpacity($(otherPanel), 0, 1, undefined);
   animateWidth($(srcPanel), srcWidth, $(srcPanel).width());
 
   $(panel).find(".icon-contract-side").toggleClass("d-none");
@@ -181,32 +190,43 @@ function expandPanelFull(event) {
   if (panel === undefined || columnPanel === undefined) {
     return;
   }
-  $(panel).find(".operatus-expand-hidden-3").toggleClass('d-lg-none')
-  $(panel).find(".operatus-expand-hidden-3").toggleClass('col-lg-4')
-  $(panel).find(".operatus-expand-hidden-12").toggleClass('d-lg-none')
-  
-  $(panel).find(".operatus-expand-main-3").toggleClass('col-lg-4')
-  
-  $(panel).find(".operatus-expand-main-hidden").toggleClass('d-lg-none')
-  $(panel).find(".operatus-expand-main-hidden").toggleClass('col-lg-4')
+  $(panel).find(".operatus-expand-hidden-3").toggleClass("d-lg-none");
+  $(panel).find(".operatus-expand-hidden-3").toggleClass("col-lg-4");
+  $(panel).find(".operatus-expand-hidden-12").toggleClass("d-lg-none");
 
-  $(panel).find(".sub-col-A > .operatus-expand-main").parent().toggleClass('col-lg-4')
-  $(panel).find(".sub-col-B > .operatus-expand-main").parent().toggleClass('col-lg-4')
-  $(panel).find(".sub-col-C > .operatus-expand-main").parent().toggleClass('col-lg-4')
+  $(panel).find(".operatus-expand-main-3").toggleClass("col-lg-4");
+
+  $(panel).find(".operatus-expand-main-hidden").toggleClass("d-lg-none");
+  $(panel).find(".operatus-expand-main-hidden").toggleClass("col-lg-4");
+
+  $(panel)
+    .find(".sub-col-A > .operatus-expand-main")
+    .parent()
+    .toggleClass("col-lg-4");
+  $(panel)
+    .find(".sub-col-B > .operatus-expand-main")
+    .parent()
+    .toggleClass("col-lg-4");
+  $(panel)
+    .find(".sub-col-C > .operatus-expand-main")
+    .parent()
+    .toggleClass("col-lg-4");
   $(panel).find(".sub-col-title").toggleClass("d-lg-flex");
 
-  $(".order-panel-D").parent().toggleClass('pl-lg-1')
+  $(".order-panel-D").parent().toggleClass("pl-lg-1");
 
-  $(columnPanel).children().each(function () {
+  $(columnPanel)
+    .children()
+    .each(function () {
       $(this).toggleClass("d-none");
-  });
-  $(panel).toggleClass("d-none")
+    });
+  $(panel).toggleClass("d-none");
   expandPanelD(event);
 
   const tablePanels = $(panel).find(".operatus-table-panel");
-  tablePanels.each(function() {
-    tableShowMore($(this))
-  })
+  tablePanels.each(function () {
+    tableShowMore($(this));
+  });
   $(panel).find(".icon-expand").toggleClass("d-lg-block");
   $(panel).find(".icon-contract").toggleClass("d-none");
 }
@@ -217,13 +237,13 @@ function onShowMore(event) {
   if (table === undefined) {
     return;
   }
-  tableShowMore($(table.children[0]))
+  tableShowMore($(table.children[0]));
 }
 
-function tableShowMore(tablePanel) {  
+function tableShowMore(tablePanel) {
   const hiddenRows = tablePanel.find(".operatus-row-hidden");
   if (hiddenRows.length === 0) {
-    return
+    return;
   }
   const tableParent = tablePanel.parent();
   const showIcon = tableParent.find(".show-more-svg");
@@ -239,8 +259,8 @@ function tableShowMore(tablePanel) {
     showIcon.parent().toggleClass("d-none");
     tableParent.css("opacity", "");
     tableParent.css("overflow-y", "");
-    return
-  }  
+    return;
+  }
 
   tableParent.css("height", srcHeight);
   tableParent.animate(
@@ -377,12 +397,12 @@ function expandPanelD(event) {
     firstCol.removeClass("col-lg-9");
     firstCol.addClass("col-lg-12");
   }
-  animateOpacity(panelA, 0, 1, undefined)
-  animateOpacity(panelB, 0, 1, parentB)
-  animateOpacity(panelC, 0, 1, parentC)
-  animateOpacity(panelE, 0, 1, parentE)
+  animateOpacity(panelA, 0, 1, undefined);
+  animateOpacity(panelB, 0, 1, parentB);
+  animateOpacity(panelC, 0, 1, parentC);
+  animateOpacity(panelE, 0, 1, parentE);
 
-  parentA.toggleClass('col-lg-8');
+  parentA.toggleClass("col-lg-8");
   $(".icon-contract-d").toggleClass("d-none");
   toggleExpandIcon();
 
@@ -412,9 +432,8 @@ function animateOpacity(panel, from, to, parent) {
 function animateWidth(panel, srcWidth, forceDstWidth, doneFunction) {
   var dstWidth = panel.width();
   if (forceDstWidth !== undefined) {
-    dstWidth = forceDstWidth
+    dstWidth = forceDstWidth;
   }
-  console.log(panel, srcWidth, dstWidth)
   panel.css("opacity", 0.5);
   panel.css("width", srcWidth);
   panel.animate(
@@ -427,7 +446,7 @@ function animateWidth(panel, srcWidth, forceDstWidth, doneFunction) {
     function () {
       panel.css("width", "auto");
       if (doneFunction !== undefined) {
-        doneFunction()
+        doneFunction();
       }
     }
   );
@@ -473,7 +492,7 @@ function adjustCss() {
     .parent()
     .css({ height: "30px" });
 
-    $('[data-toggle="tooltip"]').tooltip()
+  $('[data-toggle="tooltip"]').tooltip();
 }
 
 function removeBeakLines() {
@@ -522,5 +541,13 @@ function getExpandSideScreen() {
       <svg class="show-expand-side-svg" width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-arrow-bar-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5zM10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5z"></path>
     </svg>
+  </div>`;
+}
+
+function getFullMap() {
+  return `<div class="icon-full-map d-none d-lg-block">
+  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-map" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M15.817.113A.5.5 0 0 1 16 .5v14a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 15.01l-4.902.98A.5.5 0 0 1 0 15.5v-14a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0L10.5.99l4.902-.98a.5.5 0 0 1 .415.103zM10 1.91l-4-.8v12.98l4 .8V1.91zm1 12.98l4-.8V1.11l-4 .8v12.98zm-6-.8V1.11l-4 .8v12.98l4-.8z"/>
+  </svg>
   </div>`;
 }
