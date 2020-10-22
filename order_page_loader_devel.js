@@ -145,6 +145,14 @@ function handleSubColumnCExpand(subColumnC, panel) {
 
 function showFullMap(event) {
   const icon = event.target;
+  const panel = icon.closest(".operatus-table-panel");
+  if (panel === undefined) {
+    return;
+  }
+  const url = $(panel).find('#osm-place').attr("srcfull");
+  if (url) {
+    window.open(url, '_blank');
+  }
 }
 
 function expandPanelSide(event) {
