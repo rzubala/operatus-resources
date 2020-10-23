@@ -1,5 +1,7 @@
 const DEVEL = false;
 
+var vesselDone = false;
+
 $(document).ready(function () {
   handleLoader();
 
@@ -8,21 +10,30 @@ $(document).ready(function () {
     onDataRetrieved();
   } else {
     $.get(window.location.pathname + "&data", function (data) {
-      $("#order-data").html(data);
-      onDataRetrieved();
+      var checkVesselDone = setInterval(function () {
+        if (vesselDone) {
+          console.log('Vessel done!')
+          $("#order-data").html(data);
+          onDataRetrieved();
+          $("#loader").addClass("d-none");
+          clearInterval(checkVesselDone);
+        }
+      }, 100);
     })
       .fail(function () {
         $("#loader").addClass("d-none");
         $("#data-error").removeClass("d-none");
       })
-      .always(function () {
-        $("#loader").addClass("d-none");
-      });
+      .always(function () {});
   }
 });
 
 function handleLoader() {
   updateProgess(true);
+  setTimeout(function () {
+    console.log('Vessel ready!')
+    vesselDone = true;
+  }, 10000);
 }
 
 function updateProgess(up) {
@@ -30,7 +41,7 @@ function updateProgess(up) {
   var counterBack = setInterval(function () {
     i++;
     if (i <= 100) {
-      const width = up ? i : 100 - i
+      const width = up ? i : 100 - i;
       $(".progress-bar").css("width", width + "%");
     } else {
       clearInterval(counterBack);
