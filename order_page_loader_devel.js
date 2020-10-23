@@ -33,7 +33,7 @@ function handleLoader() {
   setTimeout(function () {
     console.log('Vessel ready!')
     vesselDone = true;
-  }, 10000);
+  }, 9000);
 }
 
 function updateProgess(up) {
