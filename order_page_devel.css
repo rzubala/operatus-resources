@@ -248,3 +248,21 @@ td > a > div > div {
     top: 1px;
   }
 }
+
+.sea-wave {
+  background: linear-gradient(to right, #428dd4E0, #67a2da80);
+  position: relative;
+  height:10px;
+  width:100vw;
+}
+.sea-wave::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-repeat: repeat;
+  height: 10px;
+  background-size: 20px 20px;
+  background-image: radial-gradient(circle at 10px -10px, transparent 13px, #2b78c2F0 13px);
+}
