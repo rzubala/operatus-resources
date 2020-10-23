@@ -205,8 +205,8 @@ td > a > div > div {
 
 #vessel {  
   position: relative;
-  -webkit-animation: vesselAnimation 10s infinite  normal linear;
-  animation: vesselAnimation 10s infinite  normal linear;
+  -webkit-animation: vesselAnimation 10s infinite  normal linear, vesselWave 2s infinite  normal linear;
+  animation: vesselAnimation 10s infinite  normal linear, vesselWave 2s infinite  normal linear;
 }
 @-webkit-keyframes vesselAnimation {
   0% {
@@ -216,11 +216,35 @@ td > a > div > div {
       left: 100vw;
   }
 }
+@-webkit-keyframes vesselWave {
+  0% {
+      top:1px;
+  }
+  50% {
+    top: 5px;
+  }
+  100% {
+    top: 1px;
+  }
+}
+
 @keyframes vesselAnimation {
   0% {
     left:0px;
   }
   100% {
     left: 100vw;
+  }
+}
+
+@keyframes vesselWave {
+  0% {
+    top:1px;
+  }
+  50% {
+    top: 5px;
+  }
+  100% {
+    top: 1px;
   }
 }
