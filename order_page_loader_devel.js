@@ -120,16 +120,20 @@ function handlePanelShowMore() {
 
   setTimeout(function () {
     $(".panel-show-more").toggleClass("panel-show-more-hover");
+    $(".panel-show-more").toggleClass("moved-up");
     $(".panelE-show-more").toggleClass("panelE-show-more-hover");
+    $(".panelE-show-more").toggleClass("moved-up");
     $(".panelC-show-more").toggleClass("panelC-show-more-hover");
     $(".panelD-show-more").toggleClass("panelD-show-more-hover");
     setTimeout(function () {
       $(".panel-show-more").toggleClass("panel-show-more-hover");
       $(".panelE-show-more").toggleClass("panelE-show-more-hover");
+      $(".panelE-show-more").toggleClass("moved-up");
       $(".panelC-show-more").toggleClass("panelC-show-more-hover");
       $(".panelD-show-more").toggleClass("panelD-show-more-hover");
-    }, 1500);
-  }, 1000);
+      $(".panel-show-more").toggleClass("moved-up");
+    }, 3000);
+  }, 2000);
 }
 
 function expandSubColumnFull(event) {

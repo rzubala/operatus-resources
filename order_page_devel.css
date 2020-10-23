@@ -180,7 +180,11 @@ td > a > div > div {
   opacity: 1;
   transform: scale(1);
   transition: opacity 0.75s ease-in-out;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.75s ease-in-out;
+}
+
+.moved-up {
+  transform: translateY(-15px);  
 }
 
 #loader > div > div:nth-child(1) > div > img {
