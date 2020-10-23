@@ -218,13 +218,13 @@ td > a > div > div {
 }
 @-webkit-keyframes vesselWave {
   0% {
-      top:1px;
+      top:3px;
   }
   50% {
-    top: 5px;
+    top: 8px;
   }
   100% {
-    top: 1px;
+    top: 3px;
   }
 }
 
@@ -239,13 +239,13 @@ td > a > div > div {
 
 @keyframes vesselWave {
   0% {
-    top:1px;
+    top:3px;
   }
   50% {
     top: 8px;
   }
   100% {
-    top: 1px;
+    top: 3px;
   }
 }
 
