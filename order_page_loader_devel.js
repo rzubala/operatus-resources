@@ -12,7 +12,6 @@ $(document).ready(function () {
     $.get(window.location.pathname + "&data", function (data) {
       var checkVesselDone = setInterval(function () {
         if (vesselDone) {
-          console.log('Vessel done!')
           $("#order-data").html(data);
           onDataRetrieved();
           $("#loader").addClass("d-none");
@@ -31,7 +30,6 @@ $(document).ready(function () {
 function handleLoader() {
   updateProgess(true);
   setTimeout(function () {
-    console.log('Vessel ready!')
     vesselDone = true;
   }, 9000);
 }
