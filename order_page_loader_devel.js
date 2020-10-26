@@ -8,6 +8,7 @@ $(document).ready(function () {
   if (DEVEL) {
     console.log("***DEVELOPMENT***");
     onDataRetrieved();
+
   } else {
     $.get(window.location.pathname + "&data", function (data) {
       var checkVesselDone = setInterval(function () {
@@ -61,6 +62,23 @@ function onDataRetrieved() {
   handleSubColumnFullScreen();
   updateExhibitorColor();
   reloadOpenStreetMaps();
+  handleCombinedTitle();
+}
+
+function handleCombinedTitle() {
+  const isCombinedTitle = $("#combinedTitle").val();
+  if (!isCombinedTitle) {
+    return;
+  }
+  $('.order-panel-A > table').css('margin-bottom', '0px')
+  $('.order-panel-B > table').css('margin-bottom', '0px')
+
+  $('.order-panel-A1 > div > table').css('margin-top', '0px')
+  $('.order-panel-B1 > table').css('margin-top', '0px')
+
+  $('.order-panel-A').css('height', 'auto')
+  const panelAHeight = $('.order-panel-A').height();
+  $('.order-panel-B').css('height', panelAHeight + 'px')
 }
 
 function reloadOpenStreetMaps() {
