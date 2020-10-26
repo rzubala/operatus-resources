@@ -85,7 +85,7 @@ function handleCombinedTitle() {
 
   const weather = $('.order-panel-B1 > table > tbody > tr:nth-child(2) > td > img')
   const weatherHeight = mapHeight > 14 ? mapHeight - 14 : 0
-  weather.css('height', mapHeight + "px")
+  weather.css('height', weatherHeight + "px")
 
   setTimeout(function () {
     diplayPanel(map, undefined, mapHeight, mapHeight, 0);
@@ -95,7 +95,7 @@ function handleCombinedTitle() {
 
 function diplayPanel(panel, parent, height, srcHeight, dstHeight) {
   panel.css("opacity", 1);
-  panel.css("height", srcHeight);
+  panel.css("height", srcHeight + "px");
   panel.animate(
     {
       height: dstHeight + "px",
