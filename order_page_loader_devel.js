@@ -84,13 +84,27 @@ function handleCombinedTitle() {
   const mapHeight = map.height()
 
   const weather = $('.order-panel-B1 > table > tbody > tr:nth-child(2) > td > img')
-  const weatherHeight = mapHeight > 14 ? mapHeight - 14 : 0
+  const weatherHeight = mapHeight > 15 ? mapHeight - 15 : 0
   weather.css('height', weatherHeight + "px")
 
   setTimeout(function () {
     diplayPanel(map, undefined, mapHeight, mapHeight, 0);
     diplayPanel(weather, weather.parent(), weatherHeight, weatherHeight, 0);
   }, 5000)
+
+  const panelA1 = $('.order-panel-A1')
+  const panelB1 = $('.order-panel-B1')
+  addCombinedTitleClick(panelA1, map, weather)
+  addCombinedTitleClick(panelB1, map, weather)
+}
+
+function addCombinedTitleClick(panel, map, weather) {
+  $(panel).find('.operatus-table-title-main').on("click", function() {showCombinedSubtitle(map, weather)});
+}
+
+function showCombinedSubtitle(map, weather) {
+  map.toggleClass('d-none');
+  weather.toggleClass('d-none');
 }
 
 function diplayPanel(panel, parent, height, srcHeight, dstHeight) {
