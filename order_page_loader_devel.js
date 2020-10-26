@@ -80,8 +80,34 @@ function handleCombinedTitle() {
   const panelAHeight = $('.order-panel-A').height();
   $('.order-panel-B').css('height', panelAHeight + 'px')
 
-  const mapHeight = $('.order-panel-A1 > div > #osm-place').height()
-  $('.order-panel-B1" > table > tbody > tr:nth-child(2) > td > img').css('height', mapHeight + "px")
+  const map = $('.order-panel-A1 > div > #osm-place');
+  const mapHeight = map.height()
+
+  const weather = $('.order-panel-B1 > table > tbody > tr:nth-child(2) > td > img')
+  weather.css('height', mapHeight + "px")
+
+  setTimeout(function () {
+    diplayPanel(map, mapHeight, mapHeight, 0);
+    diplayPanel(weather, mapHeight, mapHeight, 0);
+  }, 5000)
+}
+
+function diplayPanel(panel, height, srcHeight, dstHeight) {
+  panel.css("opacity", 1);
+  panel.css("height", srcHeight);
+  panel.animate(
+    {
+      height: dstHeight + "px",
+      opacity: 0.2,
+    },
+    1000,
+    "swing",
+    function () {
+      panel.css("height", height + "px");
+      panel.css("opacity", 1);
+      panel.toggleClass('d-none');
+    }
+  );
 }
 
 function reloadOpenStreetMaps() {
