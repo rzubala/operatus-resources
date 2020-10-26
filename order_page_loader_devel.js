@@ -88,7 +88,7 @@ function handleCombinedTitle() {
   weather.css('height', mapHeight + "px")
 
   setTimeout(function () {
-    diplayPanel(map, undefind, mapHeight, mapHeight, 0);
+    diplayPanel(map, undefined, mapHeight, mapHeight, 0);
     diplayPanel(weather, weather.parent(), weatherHeight, weatherHeight, 0);
   }, 5000)
 }
