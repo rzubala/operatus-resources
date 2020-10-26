@@ -74,7 +74,7 @@ function handleCombinedTitle() {
   $('.order-panel-B > table').css('margin-bottom', '0px')
 
   $('.order-panel-A1 > div > table').css('margin-top', '0px')
-  $('.order-panel-B1 > table').css('margin-top', '0px')
+  $('.order-panel-B1 > div > table').css('margin-top', '0px')
 
   $('.order-panel-A').css('height', 'auto')
   const panelAHeight = $('.order-panel-A').height();
@@ -83,11 +83,9 @@ function handleCombinedTitle() {
   const map = $('.order-panel-A1 > div > #osm-place');
   const mapHeight = map.height()
 
-  const weather = $('.order-panel-B1 > table > tbody > tr:nth-child(2) > td > img')
+  const weather = $('.order-panel-B1 > div > img')
   const weatherHeight = mapHeight > 15 ? mapHeight - 15 : 0
   weather.css('height', weatherHeight + "px")
-  weather.parent().css('cssText', 'height: auto !important')
-  weather.parent().parent().css('cssText', 'height: auto !important')
 
   setTimeout(function () {
     showCombinedSubtitle(map, mapHeight, weather, weatherHeight)
@@ -110,20 +108,16 @@ function showCombinedSubtitle(map, mapHeight, weather, weatherHeight) {
   const srcWeatherHeight = isHidden ? 0 : weatherHeight
   const dstWeatherHeight = isHidden ? weatherHeight : 0;
 
-  diplayCombinedPanel(map, undefined, mapHeight, srcMapHeight, dstMapHeight)
-  diplayCombinedPanel(weather, weather.parent(), weatherHeight, srcWeatherHeight, dstWeatherHeight)
+  diplayCombinedPanel(map, mapHeight, srcMapHeight, dstMapHeight)
+  diplayCombinedPanel(weather, weatherHeight, srcWeatherHeight, dstWeatherHeight)
 }
 
-function diplayCombinedPanel(panel, parent, height, srcHeight, dstHeight) {
+function diplayCombinedPanel(panel, height, srcHeight, dstHeight) {
   panel.css("opacity", dstHeight === 0 ? 1 : 0.2);
   panel.css("height", srcHeight + "px");
 
   if (srcHeight === 0) {
     panel.toggleClass('d-none');
-    if (parent) {
-      parent.toggleClass('d-none');
-      parent.parent().toggleClass('d-none')
-    }    
   }
 
   panel.animate(
@@ -139,10 +133,6 @@ function diplayCombinedPanel(panel, parent, height, srcHeight, dstHeight) {
 
       if (dstHeight === 0) {
         panel.toggleClass('d-none');
-        if (parent) {
-          parent.toggleClass('d-none');
-          parent.parent().toggleClass('d-none')
-        }
       }
     }
   );
