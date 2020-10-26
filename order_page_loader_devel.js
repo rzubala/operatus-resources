@@ -84,15 +84,16 @@ function handleCombinedTitle() {
   const mapHeight = map.height()
 
   const weather = $('.order-panel-B1 > table > tbody > tr:nth-child(2) > td > img')
+  const weatherHeight = mapHeight > 14 ? mapHeight - 14 : 0
   weather.css('height', mapHeight + "px")
 
   setTimeout(function () {
-    diplayPanel(map, mapHeight, mapHeight, 0);
-    diplayPanel(weather, mapHeight, mapHeight, 0);
+    diplayPanel(map, undefind, mapHeight, mapHeight, 0);
+    diplayPanel(weather, weather.parent(), weatherHeight, weatherHeight, 0);
   }, 5000)
 }
 
-function diplayPanel(panel, height, srcHeight, dstHeight) {
+function diplayPanel(panel, parent, height, srcHeight, dstHeight) {
   panel.css("opacity", 1);
   panel.css("height", srcHeight);
   panel.animate(
@@ -106,6 +107,9 @@ function diplayPanel(panel, height, srcHeight, dstHeight) {
       panel.css("height", height + "px");
       panel.css("opacity", 1);
       panel.toggleClass('d-none');
+      if (parent) {
+        parent.toggleClass('d-none');
+      }
     }
   );
 }
