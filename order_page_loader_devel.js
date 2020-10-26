@@ -88,44 +88,59 @@ function handleCombinedTitle() {
   weather.css('height', weatherHeight + "px")
 
   setTimeout(function () {
-    diplayPanel(map, undefined, mapHeight, mapHeight, 0);
-    diplayPanel(weather, weather.parent(), weatherHeight, weatherHeight, 0);
+    showCombinedSubtitle(map, mapHeight, weather, weatherHeight)
   }, 5000)
 
   const panelA1 = $('.order-panel-A1')
   const panelB1 = $('.order-panel-B1')
-  addCombinedTitleClick(panelA1, map, weather)
-  addCombinedTitleClick(panelB1, map, weather)
+  addCombinedTitleClick(panelA1, map, mapHeight, weather, weatherHeight)
+  addCombinedTitleClick(panelB1, map, mapHeight, weather, weatherHeight)
 }
 
-function addCombinedTitleClick(panel, map, weather) {
-  $(panel).find('.operatus-table-title-main').on("click", function() {showCombinedSubtitle(map, weather)});
+function addCombinedTitleClick(panel, map, mapHeight, weather, weatherHeight) {
+  $(panel).find('.operatus-table-title-main').on("click", function() {showCombinedSubtitle(map, mapHeight, weather, weatherHeight)});
 }
 
-function showCombinedSubtitle(map, weather) {
-  map.toggleClass('d-none');
-  weather.toggleClass('d-none');
-  weather.parent().toggleClass('d-none');
-  weather.parent().parent().toggleClass('d-none');
+function showCombinedSubtitle(map, mapHeight, weather, weatherHeight) {
+  const isHidden = map.hasClass('d-none')
+  const srcMapHeight = isHidden ? 0 : mapHeight
+  const dstMapHeight = isHidden ? mapHeight : 0;
+  const srcWeatherHeight = isHidden ? 0 : weightHeight
+  const dstWeatherHeight = isHidden ? weightHeight : 0;
+
+  diplayCombinedPanel(map, undefined, mapHeight, srcMapHeight, dstMapHeight)
+  diplayCombinedPanel(weather, weather.parent(), weatherHeight, srcWeatherHeight, dstWeatherHeight)
 }
 
-function diplayPanel(panel, parent, height, srcHeight, dstHeight) {
-  panel.css("opacity", 1);
+function diplayCombinedPanel(panel, parent, height, srcHeight, dstHeight) {
+  panel.css("opacity", dstHeight === 0 ? 1 : 0.2);
   panel.css("height", srcHeight + "px");
+
+  if (srcHeight === 0) {
+    panel.toggleClass('d-none');
+    if (parent) {
+      parent.toggleClass('d-none');
+      parent.parent().toggleClass('d-none')
+    }    
+  }
+
   panel.animate(
     {
       height: dstHeight + "px",
-      opacity: 0.2,
+      opacity: srcHeight === 0 ? 1 : 0.2,
     },
     1000,
     "swing",
     function () {
       panel.css("height", height + "px");
       panel.css("opacity", 1);
-      panel.toggleClass('d-none');
-      if (parent) {
-        parent.toggleClass('d-none');
-        parent.parent().toggleClass('d-none')
+
+      if (dstHeight === 0) {
+        panel.toggleClass('d-none');
+        if (parent) {
+          parent.toggleClass('d-none');
+          parent.parent().toggleClass('d-none')
+        }
       }
     }
   );
