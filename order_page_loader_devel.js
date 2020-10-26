@@ -79,6 +79,9 @@ function handleCombinedTitle() {
   $('.order-panel-A').css('height', 'auto')
   const panelAHeight = $('.order-panel-A').height();
   $('.order-panel-B').css('height', panelAHeight + 'px')
+
+  const mapHeight = $('.order-panel-A1 > div > #osm-place').height()
+  $('.order-panel-B1" > table > tbody > tr:nth-child(2) > td > img').css('height', mapHeight + "px")
 }
 
 function reloadOpenStreetMaps() {
