@@ -84,7 +84,7 @@ function handleCombinedTitle() {
   const mapHeight = map.height()
 
   const weather = $('.order-panel-B1 > div > img')
-  const weatherHeight = mapHeight > 15 ? mapHeight - 15 : 0
+  const weatherHeight = mapHeight > 7 ? mapHeight - 7 : 0
   weather.css('height', weatherHeight + "px")
 
   setTimeout(function () {
