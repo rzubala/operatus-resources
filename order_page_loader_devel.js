@@ -105,8 +105,8 @@ function showCombinedSubtitle(map, mapHeight, weather, weatherHeight) {
   const isHidden = map.hasClass('d-none')
   const srcMapHeight = isHidden ? 0 : mapHeight
   const dstMapHeight = isHidden ? mapHeight : 0;
-  const srcWeatherHeight = isHidden ? 0 : weightHeight
-  const dstWeatherHeight = isHidden ? weightHeight : 0;
+  const srcWeatherHeight = isHidden ? 0 : weatherHeight
+  const dstWeatherHeight = isHidden ? weatherHeight : 0;
 
   diplayCombinedPanel(map, undefined, mapHeight, srcMapHeight, dstMapHeight)
   diplayCombinedPanel(weather, weather.parent(), weatherHeight, srcWeatherHeight, dstWeatherHeight)
