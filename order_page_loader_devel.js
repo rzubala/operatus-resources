@@ -86,8 +86,8 @@ function handleCombinedTitle() {
   const weather = $('.order-panel-B1 > table > tbody > tr:nth-child(2) > td > img')
   const weatherHeight = mapHeight > 15 ? mapHeight - 15 : 0
   weather.css('height', weatherHeight + "px")
-  weather.parent().css('height', 'auto !important')
-  weather.parent().parent().css('height', 'auto !important')
+  weather.parent().css('cssText', 'height: auto !important')
+  weather.parent().parent().css('cssText', 'height: auto !important')
 
   setTimeout(function () {
     showCombinedSubtitle(map, mapHeight, weather, weatherHeight)
@@ -121,8 +121,8 @@ function diplayCombinedPanel(panel, parent, height, srcHeight, dstHeight) {
   if (srcHeight === 0) {
     panel.toggleClass('d-none');
     if (parent) {
-      //parent.toggleClass('d-none');
-      //parent.parent().toggleClass('d-none')
+      parent.toggleClass('d-none');
+      parent.parent().toggleClass('d-none')
     }    
   }
 
@@ -140,8 +140,8 @@ function diplayCombinedPanel(panel, parent, height, srcHeight, dstHeight) {
       if (dstHeight === 0) {
         panel.toggleClass('d-none');
         if (parent) {
-          //parent.toggleClass('d-none');
-          //parent.parent().toggleClass('d-none')
+          parent.toggleClass('d-none');
+          parent.parent().toggleClass('d-none')
         }
       }
     }
