@@ -105,6 +105,8 @@ function addCombinedTitleClick(panel, map, weather) {
 function showCombinedSubtitle(map, weather) {
   map.toggleClass('d-none');
   weather.toggleClass('d-none');
+  weather.parent().toggleClass('d-none');
+  weather.parent().parent().toggleClass('d-none');
 }
 
 function diplayPanel(panel, parent, height, srcHeight, dstHeight) {
@@ -123,6 +125,7 @@ function diplayPanel(panel, parent, height, srcHeight, dstHeight) {
       panel.toggleClass('d-none');
       if (parent) {
         parent.toggleClass('d-none');
+        parent.parent().toggleClass('d-none')
       }
     }
   );
