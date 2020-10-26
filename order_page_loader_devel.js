@@ -84,8 +84,8 @@ function handleCombinedTitle() {
   const mapHeight = map.height()
 
   const weather = $('.order-panel-B1 > div > img')
-  const weatherHeight = mapHeight > 7 ? mapHeight - 7 : 0
-  weather.css('height', weatherHeight + "px")
+  const weatherHeight = 343;
+  weather.css('height', weatherHeight + "343px")  
 
   setTimeout(function () {
     showCombinedSubtitle(map, mapHeight, weather, weatherHeight)
