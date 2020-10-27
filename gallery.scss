@@ -5,14 +5,14 @@ $bootstrap-xl: 1200px;
 
 #gallery {
   img {
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 
 .carousel-item {
   img {
     height: 90vw;
-    object-fit: cover;
+    object-fit: contain;
     @media (min-width: $bootstrap-sm) {
       height: calc(95vh - 24px - 2*16px - 46px - 2*12px);
     }
