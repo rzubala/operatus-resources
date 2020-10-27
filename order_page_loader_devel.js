@@ -63,6 +63,85 @@ function onDataRetrieved() {
   updateExhibitorColor();
   reloadOpenStreetMaps();
   handleCombinedTitle();
+  handleExpandTableRows();
+}
+
+function handleExpandTableRows() {
+  $('.operatus-row-show-more').append(getExpandTableRows());
+  $('.operatus-row-show-less').append(getContractTableRows());
+
+  $(".operatus-row-to-hide").addClass("d-none");
+  $(".operatus-row-show-less").addClass("d-none");
+
+  $(".rows-more-svg").on("click", onExpandTableRows);
+  $(".rows-less-svg").on("click", onContractTableRows);
+}
+
+function onContractTableRows(event) {
+  contractTableRows(event.target);
+}
+
+function contractTableRows(icon) {
+  const tablePanel = $(icon.closest(".operatus-table-panel"));
+  const iconRow = icon.closest(".operatus-row-show-less");
+  const hiddenRows = tablePanel.find("tr.operatus-row-to-hide");
+  
+  const srcHeight = tablePanel.height();
+  
+  $(iconRow).toggleClass("d-none");    
+  const iconLess = tablePanel.find("tr.operatus-row-action")
+  $(iconLess).toggleClass("d-none");
+  
+  tablePanel.css("opacity", 0.2);
+  hiddenRows.toggleClass("d-none");  
+  const dstHeight = tablePanel.height();  
+
+  hiddenRows.toggleClass("d-none");
+  
+  tablePanel.css("height", srcHeight + "px");
+  tablePanel.css("overflow-y", "hidden");
+  tablePanel.animate(
+    {
+      height: dstHeight + "px",
+      opacity: 1,
+    },
+    700,
+    "swing",
+    function () {
+      hiddenRows.toggleClass("d-none");
+      tablePanel.css("height", "auto");
+    }
+  );
+}
+
+function onExpandTableRows(event) {
+  expandTableRows(event.target)
+}
+
+function expandTableRows(icon) {
+  const tablePanel = $(icon.closest(".operatus-table-panel"));
+  const iconRow = icon.closest(".operatus-row-action");
+  const hiddenRows = tablePanel.find("tr.operatus-row-to-hide");  
+  hiddenRows.toggleClass("d-none");
+  tablePanel.css("opacity", 0.2);
+  const dstHeight = tablePanel.height();
+  $(iconRow).toggleClass("d-none");  
+
+  tablePanel.css("height", "0px");
+  tablePanel.css("overflow-y", "hidden");
+  tablePanel.animate(
+    {
+      height: dstHeight + "px",
+      opacity: 1,
+    },
+    700,
+    "swing",
+    function () {
+      tablePanel.css("height", "auto");
+      const iconLess = tablePanel.find("div.operatus-row-show-less")
+      $(iconLess).toggleClass("d-none");
+    }
+  );
 }
 
 function handleCombinedTitle() {
@@ -668,5 +747,20 @@ function getFullMap() {
   <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-map" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" d="M15.817.113A.5.5 0 0 1 16 .5v14a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 15.01l-4.902.98A.5.5 0 0 1 0 15.5v-14a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0L10.5.99l4.902-.98a.5.5 0 0 1 .415.103zM10 1.91l-4-.8v12.98l4 .8V1.91zm1 12.98l4-.8V1.11l-4 .8v12.98zm-6-.8V1.11l-4 .8v12.98l4-.8z"/>
   </svg>
+  </div>`;
+}
+
+function getExpandTableRows() {
+  return `<div class="icon-expand-table">
+    <svg class="rows-more-svg" width="30px" height="30px" viewBox="0 0 16 16" class="bi bi-arrows-expand" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zM7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708l2-2zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10z"/>
+    </svg>
+  </div>`;
+}
+function getContractTableRows() {
+  return `<div class="icon-contract-table">
+    <svg class="rows-less-svg" width="30px" height="30px" viewBox="0 0 16 16" class="bi bi-arrows-collapse" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zm7-8a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 4.293V.5A.5.5 0 0 1 8 0zm-.5 11.707l-1.146 1.147a.5.5 0 0 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 11.707V15.5a.5.5 0 0 1-1 0v-3.793z"/>
+    </svg>
   </div>`;
 }
