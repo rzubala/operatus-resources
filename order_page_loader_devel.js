@@ -105,7 +105,7 @@ function contractTableRows(icon) {
       height: dstHeight + "px",
       opacity: 1,
     },
-    700,
+    500,
     "swing",
     function () {
       hiddenRows.toggleClass("d-none");
@@ -128,14 +128,14 @@ function expandTableRows(icon) {
   const dstHeight = tablePanel.height();
   $(iconRow).toggleClass("d-none");  
 
-  tablePanel.css("height", srcHeight + "px");
+  tablePanel.css("height", "0px");
   tablePanel.css("overflow-y", "hidden");
   tablePanel.animate(
     {
       height: dstHeight + "px",
       opacity: 1,
     },
-    700,
+    500,
     "swing",
     function () {
       tablePanel.css("height", "auto");
