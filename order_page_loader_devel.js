@@ -1,4 +1,4 @@
-const DEVEL = false;
+const DEVEL = true;
 
 var vesselDone = false;
 
@@ -7,7 +7,7 @@ $(document).ready(function () {
 
   if (DEVEL) {
     console.log("***DEVELOPMENT***");
-    onDataRetrieved();
+    //onDataRetrieved();
 
   } else {
     $.get(window.location.pathname + "&data", function (data) {
