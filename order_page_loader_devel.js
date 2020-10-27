@@ -56,6 +56,7 @@ function onDataRetrieved() {
   registerExpandClick();
   adjustCss();
   showMoreE();
+  handleExpandTableRows();
   handlePanelShowMore();
   handlePanelFullScreen();
   handlePanelExpandSide();
@@ -63,7 +64,6 @@ function onDataRetrieved() {
   updateExhibitorColor();
   reloadOpenStreetMaps();
   handleCombinedTitle();
-  handleExpandTableRows();
 }
 
 function handleExpandTableRows() {
@@ -121,13 +121,14 @@ function onExpandTableRows(event) {
 function expandTableRows(icon) {
   const tablePanel = $(icon.closest(".operatus-table-panel"));
   const iconRow = icon.closest(".operatus-row-action");
-  const hiddenRows = tablePanel.find("tr.operatus-row-to-hide");  
+  const hiddenRows = tablePanel.find("tr.operatus-row-to-hide");
+  const srcHeight = tablePanel.height();
   hiddenRows.toggleClass("d-none");
   tablePanel.css("opacity", 0.2);
   const dstHeight = tablePanel.height();
   $(iconRow).toggleClass("d-none");  
 
-  tablePanel.css("height", "0px");
+  tablePanel.css("height", srcHeight + "px");
   tablePanel.css("overflow-y", "hidden");
   tablePanel.animate(
     {
