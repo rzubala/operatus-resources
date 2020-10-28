@@ -7,7 +7,7 @@ $(document).ready(function () {
 
   if (DEVEL) {
     console.log("***DEVELOPMENT***");
-    //onDataRetrieved();
+    onDataRetrieved();
 
   } else {
     $.get(window.location.pathname + "&data", function (data) {
@@ -277,25 +277,16 @@ function handleSubColumnFullScreen() {
 }
 
 function handlePanelShowMore() {
-  $(".operatus-row-hidden").addClass("d-none");
-  $(".operatus-expand-table").html(getShowMoreHtml());
-  $(".panel-show-more").on("click", onShowMore);
-  $(".panel-show-less").on("click", onShowMore);
-
   setTimeout(function () {
     $(".panel-show-more").toggleClass("panel-show-more-hover");
     $(".panel-show-more").toggleClass("moved-up");
     $(".panelE-show-more").toggleClass("panelE-show-more-hover");
     $(".panelE-show-more").toggleClass("moved-up");
-    $(".panelC-show-more").toggleClass("panelC-show-more-hover");
-    $(".panelD-show-more").toggleClass("panelD-show-more-hover");
     setTimeout(function () {
       $(".panel-show-more").toggleClass("panel-show-more-hover");
+      $(".panel-show-more").toggleClass("moved-up");
       $(".panelE-show-more").toggleClass("panelE-show-more-hover");
       $(".panelE-show-more").toggleClass("moved-up");
-      $(".panelC-show-more").toggleClass("panelC-show-more-hover");
-      $(".panelD-show-more").toggleClass("panelD-show-more-hover");
-      $(".panel-show-more").toggleClass("moved-up");
     }, 3000);
   }, 2000);
 }
@@ -422,75 +413,13 @@ function expandPanelFull(event) {
   $(panel).toggleClass("d-none");
   expandPanelD(event);
 
-  const tablePanels = $(panel).find(".operatus-table-panel");
-  tablePanels.each(function () {
-    tableShowMore($(this));
-  });
   $(panel).find(".icon-expand").toggleClass("d-lg-block");
   $(panel).find(".icon-contract").toggleClass("d-none");
-}
-
-function onShowMore(event) {
-  const icon = event.target;
-  const table = icon.closest(".operatus-table-panel");
-  if (table === undefined) {
-    return;
-  }
-  tableShowMore($(table.children[0]));
-}
-
-function tableShowMore(tablePanel) {
-  const hiddenRows = tablePanel.find(".operatus-row-hidden");
-  if (hiddenRows.length === 0) {
-    return;
-  }
-  const tableParent = tablePanel.parent();
-  const showIcon = tableParent.find(".show-more-svg");
-  const srcHeight = tableParent.height();
-
-  tableParent.css("overflow-y", "hidden");
-  tableParent.css("opacity", 0.5);
-
-  hiddenRows.toggleClass("d-none");
-
-  const dstHeight = tableParent.height();
-  if (srcHeight === 0 && dstHeight === 0) {
-    showIcon.parent().toggleClass("d-none");
-    tableParent.css("opacity", "");
-    tableParent.css("overflow-y", "");
-    return;
-  }
-
-  tableParent.css("height", srcHeight);
-  tableParent.animate(
-    {
-      height: dstHeight + "px",
-      opacity: 1,
-    },
-    600,
-    "swing",
-    function () {
-      tableParent.css("opacity", "");
-      tableParent.css("overflow-y", "");
-      showIcon.parent().toggleClass("d-none");
-      tableParent.css("height", "");
-    }
-  );
 }
 
 function showMoreE() {
   $(".panelE-show-more").on("click", onShowMoreE);
   $(".panelE-show-less").on("click", onShowMoreE);
-}
-
-function onShowMoreC() {
-  const panelC = $(".order-panel-C > div.inner-panel");
-  onShowMoreCommon(panelC, "panelC", "", 300);
-}
-
-function onShowMoreD() {
-  const panelD = $(".order-panel-D > div.inner-panel");
-  onShowMoreCommon(panelD, "panelD", "", 300);
 }
 
 function onShowMoreE() {
