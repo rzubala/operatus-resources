@@ -133,7 +133,7 @@ function expandTableRows(icon) {
     opacity: 1
   }, 600, "swing")
 
-  const dstHeight = tablePanel.height() - 5;
+  const dstHeight = tablePanel.height() - 10;
   $(iconRow).toggleClass("d-none");  
 
   tablePanel.css("height", srcHeight + "px");
