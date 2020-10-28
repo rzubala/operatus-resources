@@ -8,7 +8,7 @@ $(document).ready(function () {
   if (DEVEL) {
     console.log("***DEVELOPMENT***");
     onDataRetrieved();
-
+    
   } else {
     $.get(window.location.pathname + "&data", function (data) {
       var checkVesselDone = setInterval(function () {
@@ -92,18 +92,21 @@ function contractTableRows(icon) {
   const iconLess = tablePanel.find("tr.operatus-row-action")
   $(iconLess).toggleClass("d-none");
   
-  tablePanel.css("opacity", 0.2);
   hiddenRows.toggleClass("d-none");  
   const dstHeight = tablePanel.height();  
 
   hiddenRows.toggleClass("d-none");
+  
+  hiddenRows.css('opacity', 1)
+  hiddenRows.animate({
+    opacity: 0
+  }, 600, "swing")
   
   tablePanel.css("height", srcHeight + "px");
   tablePanel.css("overflow-y", "hidden");
   tablePanel.animate(
     {
       height: dstHeight + "px",
-      opacity: 1,
     },
     500,
     "swing",
@@ -124,7 +127,12 @@ function expandTableRows(icon) {
   const hiddenRows = tablePanel.find("tr.operatus-row-to-hide");
   const srcHeight = tablePanel.height();
   hiddenRows.toggleClass("d-none");
-  tablePanel.css("opacity", 0.2);
+  
+  hiddenRows.css('opacity', 0)
+  hiddenRows.animate({
+    opacity: 1
+  }, 600, "swing")
+
   const dstHeight = tablePanel.height();
   $(iconRow).toggleClass("d-none");  
 
@@ -133,7 +141,6 @@ function expandTableRows(icon) {
   tablePanel.animate(
     {
       height: dstHeight + "px",
-      opacity: 1,
     },
     500,
     "swing",
@@ -143,6 +150,8 @@ function expandTableRows(icon) {
       $(iconLess).toggleClass("d-none");
     }
   );
+
+
 }
 
 function handleCombinedTitle() {
