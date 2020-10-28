@@ -87,6 +87,20 @@ td > a > div > div {
   z-index: 10;
 }
 
+.order-panel-A1 > div > table > tbody > tr > td > div,
+.order-panel-B1 > div > table > tbody > tr > td > div {
+  padding-left: 15px !important;
+}
+
+.icon-show-title,
+.icon-hide-title {
+  color: #505050;
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  z-index: 10;
+}
+
 .icon-expand-e-top,
 .operatus-expand-sub > .icon-expand,
 .operatus-expand-sub > .icon-contract {

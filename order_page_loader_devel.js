@@ -167,6 +167,11 @@ function handleCombinedTitle() {
   const weatherHeight = 343;
   weather.css('height', weatherHeight + "px")  
 
+  $('.order-panel-A1 > div').append(getArrowDown())
+  $('.order-panel-B1 > div').append(getArrowDown())
+  $('.order-panel-A1 > div').append(getArrowUp())
+  $('.order-panel-B1 > div').append(getArrowUp())
+
   setTimeout(function () {
     showCombinedSubtitle(map, mapHeight, weather, weatherHeight)
   }, 5000)
@@ -179,6 +184,8 @@ function handleCombinedTitle() {
 
 function addCombinedTitleClick(panel, map, mapHeight, weather, weatherHeight) {
   $(panel).find('.operatus-table-title-main').on("click", function() {showCombinedSubtitle(map, mapHeight, weather, weatherHeight)});
+  $(panel).find('.icon-show-title').on("click", function() {showCombinedSubtitle(map, mapHeight, weather, weatherHeight)});
+  $(panel).find('.icon-hide-title').on("click", function() {showCombinedSubtitle(map, mapHeight, weather, weatherHeight)});
 }
 
 function showCombinedSubtitle(map, mapHeight, weather, weatherHeight) {
@@ -190,6 +197,7 @@ function showCombinedSubtitle(map, mapHeight, weather, weatherHeight) {
 
   diplayCombinedPanel(map, mapHeight, srcMapHeight, dstMapHeight)
   diplayCombinedPanel(weather, weatherHeight, srcWeatherHeight, dstWeatherHeight)
+  
 }
 
 function diplayCombinedPanel(panel, height, srcHeight, dstHeight) {
@@ -198,6 +206,8 @@ function diplayCombinedPanel(panel, height, srcHeight, dstHeight) {
 
   if (srcHeight === 0) {
     panel.toggleClass('d-none');
+    panel.siblings('.icon-show-title').toggleClass('d-none')
+    panel.siblings('.icon-hide-title').toggleClass('d-none')
   }
 
   panel.animate(
@@ -213,6 +223,8 @@ function diplayCombinedPanel(panel, height, srcHeight, dstHeight) {
 
       if (dstHeight === 0) {
         panel.toggleClass('d-none');
+        panel.siblings('.icon-show-title').toggleClass('d-none')
+        panel.siblings('.icon-hide-title').toggleClass('d-none')
       }
     }
   );
@@ -691,6 +703,22 @@ function getContractTableRows() {
   return `<div class="icon-contract-table">
     <svg class="rows-less-svg" width="30px" height="30px" viewBox="0 0 16 16" class="bi bi-arrows-collapse" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zm7-8a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 4.293V.5A.5.5 0 0 1 8 0zm-.5 11.707l-1.146 1.147a.5.5 0 0 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 11.707V15.5a.5.5 0 0 1-1 0v-3.793z"/>
+    </svg>
+  </div>`;
+}
+
+function getArrowDown() {
+  return `<div class="icon-show-title d-none">
+    <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-arrow-down-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+    </svg>
+  </div>`;
+}
+
+function getArrowUp() {
+  return `<div class="icon-hide-title">
+    <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-arrow-up-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
     </svg>
   </div>`;
 }
