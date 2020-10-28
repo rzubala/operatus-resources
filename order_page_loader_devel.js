@@ -128,7 +128,7 @@ function expandTableRows(icon) {
   const dstHeight = tablePanel.height();
   $(iconRow).toggleClass("d-none");  
 
-  tablePanel.css("height", "0px");
+  tablePanel.css("height", srcHeight + "px");
   tablePanel.css("overflow-y", "hidden");
   tablePanel.animate(
     {
