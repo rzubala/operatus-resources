@@ -133,10 +133,8 @@ function expandTableRows(icon) {
     opacity: 1
   }, 600, "swing")
 
-  const dstHeight = tablePanel.height();
+  const dstHeight = tablePanel.height() - 5;
   $(iconRow).toggleClass("d-none");  
-
-  console.log("dst", dstHeight)
 
   tablePanel.css("height", srcHeight + "px");
   tablePanel.css("overflow-y", "hidden");
@@ -150,8 +148,6 @@ function expandTableRows(icon) {
       tablePanel.css("height", "auto");
       const iconLess = tablePanel.find("div.operatus-row-show-less")
       $(iconLess).toggleClass("d-none");
-      const height = tablePanel.height();
-      console.log("after", height)
     }
   );
 
