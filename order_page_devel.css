@@ -204,6 +204,13 @@ td > a > div > div {
   transition: transform 0.75s ease-in-out;
 }
 
+.operatus-row-show-more-container {  
+}
+
+.show-more-label {
+  font-size: 10pt;
+}
+
 .moved-up {
   transform: translateY(-15px);  
 }
