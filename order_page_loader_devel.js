@@ -632,7 +632,7 @@ function toggleExpandIcon() {
 
 function adjustCss() {
   $("td").css({ height: "30px" });
-  $("td > a").css({ height: "30px" });
+  $("tr:not(.tr-skip-height) > td > a").css({ height: "30px" });
   $("td > a > div > div > p").css({ height: "20px" });
   $("td > a > div > div > p")
     .parent()
