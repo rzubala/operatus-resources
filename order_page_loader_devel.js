@@ -74,6 +74,7 @@ function handleExpandTableRows() {
   $(".operatus-row-show-less").addClass("d-none");
 
   $(".rows-more-svg").on("click", onExpandTableRows);
+  $(".show-more-label").on("click", onContractTableRows);
   $(".rows-less-svg").on("click", onContractTableRows);
 }
 
