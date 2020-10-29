@@ -204,15 +204,6 @@ td > a > div > div {
   transition: transform 0.75s ease-in-out;
 }
 
-tr.operatus-row-action td:before {
-  content: " ";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  border-bottom: 1px groove #333;
-  width: 100%;
-}
-
 .moved-up {
   transform: translateY(-15px);  
 }
