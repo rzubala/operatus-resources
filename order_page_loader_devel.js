@@ -151,8 +151,10 @@ function expandTableRows(icon) {
 
       setTimeout(function () {
         $(iconLess).toggleClass("moved-up");
+        $(iconLess).toggleClass("panel-show-more-hover");
         setTimeout(function () {
           $(iconLess).toggleClass("moved-up");
+          $(iconLess).toggleClass("panel-show-more-hover");
         }, 3000);
       }, 1000);      
     }
