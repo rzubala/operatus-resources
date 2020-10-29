@@ -74,7 +74,7 @@ function handleExpandTableRows() {
   $(".operatus-row-show-less").addClass("d-none");
 
   $(".rows-more-svg").on("click", onExpandTableRows);
-  $(".show-more-label").on("click", onContractTableRows);
+  $(".show-more-label").on("click", onLabelExpandTableRows);
   $(".rows-less-svg").on("click", onContractTableRows);
 }
 
@@ -116,6 +116,11 @@ function contractTableRows(icon) {
       tablePanel.css("height", "auto");
     }
   );
+}
+
+function onLabelExpandTableRows(event) {
+  const icon = event.target.siblings('.icon-expand-table').find('svg')
+  expandTableRows(icon)
 }
 
 function onExpandTableRows(event) {
