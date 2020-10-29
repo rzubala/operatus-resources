@@ -90,7 +90,8 @@ function contractTableRows(icon) {
   
   $(iconRow).toggleClass("d-none");    
   const iconLess = tablePanel.find("tr.operatus-row-action")
-  $(iconLess).toggleClass("d-none");
+  console.log(iconLess)
+  $(iconLess).removeClass("d-none");
   
   hiddenRows.toggleClass("d-none");  
   const dstHeight = tablePanel.height();  

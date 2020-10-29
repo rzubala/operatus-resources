@@ -216,7 +216,7 @@ td > a > div > div {
 }
 
 .moved-up {
-  transform: translateY(-15px);  
+  transform: translateY(-10px);  
 }
 
 #loader > div > div:nth-child(1) > div > img {
