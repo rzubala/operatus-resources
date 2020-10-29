@@ -205,10 +205,14 @@ td > a > div > div {
 }
 
 .operatus-row-show-more-container {  
+  position: relative;
 }
 
 .show-more-label {
-  font-size: 10pt;
+  font-size: 16pt;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 
 .moved-up {
