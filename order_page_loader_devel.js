@@ -119,7 +119,7 @@ function contractTableRows(icon) {
 }
 
 function onLabelExpandTableRows(event) {
-  const icon = event.target.siblings('.icon-expand-table').find('svg')
+  const icon = $(event.target).siblings('.icon-expand-table').find('svg')
   expandTableRows(icon)
 }
 
