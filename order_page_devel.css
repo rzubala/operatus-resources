@@ -3,15 +3,22 @@ body {
   height: 100%;
 }
 
-table > tbody > tr {
+.tr-skip-height {
+  height: auto;
+}
+
+table > tbody > tr:not(.tr-skip-height) {
   height: 30px !important;
 }
 
-table > tbody > tr > td {
+table > tbody > tr:not(.tr-skip-height) > td {
   height: 30px !important;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+table > tbody > tr > td {
   font-size: 9pt !important;
 }
 
