@@ -89,9 +89,8 @@ function contractTableRows(icon) {
   const srcHeight = tablePanel.height();
   
   $(iconRow).toggleClass("d-none");    
-  const iconLess = tablePanel.find("tr.operatus-row-action")
-  console.log(iconLess)
-  $(iconLess).removeClass("d-none");
+  const iconLess = tablePanel.find("tr.operatus-row-action")  
+  $(iconLess).toggleClass("d-none");
   
   hiddenRows.toggleClass("d-none");  
   const dstHeight = tablePanel.height();  
@@ -149,6 +148,13 @@ function expandTableRows(icon) {
       tablePanel.css("height", "auto");
       const iconLess = tablePanel.find("div.operatus-row-show-less")
       $(iconLess).toggleClass("d-none");
+
+      setTimeout(function () {
+        $(iconLess).toggleClass("moved-up");
+        setTimeout(function () {
+          $(iconLess).toggleClass("moved-up");
+        }, 3000);
+      }, 1000);      
     }
   );
 
