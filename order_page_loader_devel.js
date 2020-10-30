@@ -65,6 +65,7 @@ function onDataRetrieved() {
   reloadOpenStreetMaps();
   handleCombinedTitle();
   handleOrderedScopeTable();
+  handleCamera();
 }
 
 function handleOrderedScopeTable() {
