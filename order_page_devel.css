@@ -97,7 +97,8 @@ td > a > div > div {
 .icon-contract-d,
 .icon-contract-c,
 .icon-contract-e,
-.icon-full-map {
+.icon-full-map,
+.icon-full-camera {
   color: #505050;
   position: absolute;
   top: 10px;
