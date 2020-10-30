@@ -22,8 +22,8 @@ table > tbody > tr > td {
   font-size: 9pt !important;
 }
 
-.ordered-scope-table > table > tbody > tr,
-.ordered-scope-table > table > tbody > tr > td {
+.ordered-scope-table > table > tbody > tr.tr-skip-height,
+.ordered-scope-table > table > tbody > tr.tr-skip-height > td {
   height: 28px !important;
   font-size: 8pt !important;
 }

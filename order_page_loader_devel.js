@@ -73,9 +73,9 @@ function handleOrderedScopeTable() {
     $('.ordered-scope-img').css('width', '30px');
     $('.ordered-scope-img').css('height', '20px');
         
-    $(".ordered-scope-table > table > tbody > tr").css("cssText", "height: 25px !important;");
-    $(".ordered-scope-table > table > tbody > tr > td").css("cssText", "height: 25px !important;");
-    $(".ordered-scope-table > table > tbody > tr > td").css("cssText", "font-size: 7pt !important;");
+    $(".ordered-scope-table > table > tbody > tr.tr-skip-height").css("cssText", "height: 25px !important;");
+    $(".ordered-scope-table > table > tbody > tr.tr-skip-height > td").css("cssText", "height: 25px !important;");
+    $(".ordered-scope-table > table > tbody > tr.tr-skip-height > td").css("cssText", "font-size: 7pt !important;");
   }
 }
 
