@@ -84,7 +84,7 @@ function handleExpandTableRows() {
   $('.operatus-row-show-less').append(getContractTableRows());
 
   $(".operatus-row-to-hide").addClass("d-none");
-  $(".operatus-row-show-less").addClass("d-none");
+  //$(".operatus-row-show-less").addClass("d-none");
 
   $(".rows-more-svg").on("click", onExpandTableRows);
   $(".show-more-label").on("click", onLabelExpandTableRows);
