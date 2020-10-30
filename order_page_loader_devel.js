@@ -300,6 +300,7 @@ function handlePanelFullScreen() {
 
   $(".sub-col-A > .operatus-expand-main").parent().toggleClass("col-lg-4");
   $(".sub-col-B > .operatus-expand-main").parent().toggleClass("col-lg-4");
+  $(".sub-col-B5 > .operatus-expand-main").parent().toggleClass("col-lg-5");
   $(".sub-col-C > .operatus-expand-main").parent().toggleClass("col-lg-4");
 }
 
@@ -349,6 +350,7 @@ function expandSubColumnFull(event) {
 function handleSubColumnCExpand(subColumnC, panel) {
   subColumnC.siblings(".sub-col-A").toggleClass("d-none");
   subColumnC.siblings(".sub-col-B").toggleClass("d-none");
+  subColumnC.siblings(".sub-col-B5").toggleClass("d-none");
   subColumnC.toggleClass("col-lg-4");
   subColumnC.toggleClass("pl-lg-1");
   subColumnC.children().each(function () {
@@ -433,6 +435,10 @@ function expandPanelFull(event) {
     .find(".sub-col-B > .operatus-expand-main")
     .parent()
     .toggleClass("col-lg-4");
+  $(panel)
+    .find(".sub-col-B5 > .operatus-expand-main")
+    .parent()
+    .toggleClass("col-lg-5");
   $(panel)
     .find(".sub-col-C > .operatus-expand-main")
     .parent()
