@@ -278,11 +278,11 @@ function reloadOpenStreetMaps() {
   }, 1000);
 
   $("#osm-place").parent().prepend(getFullMap());
-  $(".icon-full-map").on("click", getFullCamera);
+  $(".icon-full-map").on("click", showFullMap);
 }
 
 function handleCamera() {
-  $("#operatus-camera").parent().prepend(getFullMap()); //FIXME
+  $("#operatus-camera").parent().prepend(getFullCamera());
   $(".icon-full-map").on("click", showFullCamera);
 }
 
@@ -391,23 +391,20 @@ function handleSubColumnCExpand(subColumnC, panel) {
 
 function showFullMap(event) {
   const icon = event.target;
-  const panel = icon.closest(".operatus-table-panel");
-  if (panel === undefined) {
-    return;
-  }
-  const url = $(panel).find("#osm-place").attr("srcfull");
-  if (url) {
-    window.open(url, "_blank");
-  }
+  showNewTab(icon, "#osm-place")
 }
 
 function showFullCamera(event) {
   const icon = event.target;
+  showNewTab(icon, "#operatus-camera")
+}
+
+function showNewTab(icon, id) {
   const panel = icon.closest(".operatus-table-panel");
   if (panel === undefined) {
     return;
   }
-  const url = $(panel).find("#operatus-camera").attr("srcfull");
+  const url = $(panel).find(id).attr("srcfull");
   if (url) {
     window.open(url, "_blank");
   }
