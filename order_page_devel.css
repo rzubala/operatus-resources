@@ -22,6 +22,12 @@ table > tbody > tr > td {
   font-size: 9pt !important;
 }
 
+.ordered-scope-table > table > tbody > tr,
+.ordered-scope-table > table > tbody > tr > td {
+  height: 28px !important;
+  font-size: 8pt !important;
+}
+
 table > tbody > tr > td > span {
   font-size: 9pt !important;
 }
