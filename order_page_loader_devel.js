@@ -64,6 +64,19 @@ function onDataRetrieved() {
   updateExhibitorColor();
   reloadOpenStreetMaps();
   handleCombinedTitle();
+  handleOrderedScopeTable();
+}
+
+function handleOrderedScopeTable() {
+  const rows = $('.ordered-scope-table > table > tbody').children('.tr-skip-height').length;
+  if (rows > 7) {
+    $('.ordered-scope-img').css('width', '30px');
+    $('.ordered-scope-img').css('height', '20px');
+        
+    $(".ordered-scope-table > table > tbody > tr").css("cssText", "height: 25px !important;");
+    $(".ordered-scope-table > table > tbody > tr > td").css("cssText", "height: 25px !important;");
+    $(".ordered-scope-table > table > tbody > tr > td").css("cssText", "font-size: 7pt !important;");
+  }
 }
 
 function handleExpandTableRows() {
