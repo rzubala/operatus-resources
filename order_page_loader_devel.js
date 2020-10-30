@@ -84,7 +84,6 @@ function handleExpandTableRows() {
   $('.operatus-row-show-less').append(getContractTableRows());
 
   $(".operatus-row-to-hide").addClass("d-none");
-  //$(".operatus-row-show-less").addClass("d-none");
 
   $(".rows-more-svg").on("click", onExpandTableRows);
   $(".show-more-label").on("click", onLabelExpandTableRows);
@@ -156,7 +155,7 @@ function expandTableRows(icon) {
   $(iconRow).toggleClass("d-none");  
 
   const iconLess = tablePanel.find("tr.operatus-row-action-contract")
-  $(iconLess).toggleClass("d-none");
+  const lessSvg = $(iconLess).find(".operatus-row-show-less");
 
   tablePanel.css("height", srcHeight + "px");
   tablePanel.css("overflow-y", "hidden");
@@ -168,13 +167,14 @@ function expandTableRows(icon) {
     "swing",
     function () {
       tablePanel.css("height", "auto");
+      $(iconLess).toggleClass("d-none");
 
       setTimeout(function () {
-        $(iconLess).toggleClass("moved-up");
-        $(iconLess).toggleClass("panel-show-more-hover");
+        $(lessSvg).toggleClass("moved-up");
+        $(lessSvg).toggleClass("panel-show-more-hover");
         setTimeout(function () {
-          $(iconLess).toggleClass("moved-up");
-          $(iconLess).toggleClass("panel-show-more-hover");
+          $(lessSvg).toggleClass("moved-up");
+          $(lessSvg).toggleClass("panel-show-more-hover");
         }, 3000);
       }, 500);      
     }
