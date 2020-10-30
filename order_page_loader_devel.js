@@ -330,12 +330,10 @@ function handleSubColumnFullScreen() {
 function handlePanelShowMore() {
   setTimeout(function () {
     $(".panel-show-more").toggleClass("panel-show-more-hover");
-    $(".panel-show-more").toggleClass("moved-up");
     $(".panelE-show-more").toggleClass("panelE-show-more-hover");
     $(".panelE-show-more").toggleClass("moved-up");
     setTimeout(function () {
       $(".panel-show-more").toggleClass("panel-show-more-hover");
-      $(".panel-show-more").toggleClass("moved-up");
       $(".panelE-show-more").toggleClass("panelE-show-more-hover");
       $(".panelE-show-more").toggleClass("moved-up");
     }, 3000);
