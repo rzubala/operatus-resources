@@ -97,7 +97,7 @@ function onContractTableRows(event) {
 
 function contractTableRows(icon) {
   const tablePanel = $(icon.closest(".operatus-table-panel"));
-  const iconRow = icon.closest(".operatus-row-show-less");
+  const iconRow = icon.closest("tr.operatus-row-action-contract");
   const hiddenRows = tablePanel.find("tr.operatus-row-to-hide");
   
   const srcHeight = tablePanel.height();
@@ -155,6 +155,9 @@ function expandTableRows(icon) {
   const dstHeight = tablePanel.height() - 10;
   $(iconRow).toggleClass("d-none");  
 
+  const iconLess = tablePanel.find("tr.operatus-row-action-contract")
+  $(iconLess).toggleClass("d-none");
+
   tablePanel.css("height", srcHeight + "px");
   tablePanel.css("overflow-y", "hidden");
   tablePanel.animate(
@@ -165,8 +168,6 @@ function expandTableRows(icon) {
     "swing",
     function () {
       tablePanel.css("height", "auto");
-      const iconLess = tablePanel.find("div.operatus-row-show-less")
-      $(iconLess).toggleClass("d-none");
 
       setTimeout(function () {
         $(iconLess).toggleClass("moved-up");
@@ -175,7 +176,7 @@ function expandTableRows(icon) {
           $(iconLess).toggleClass("moved-up");
           $(iconLess).toggleClass("panel-show-more-hover");
         }, 3000);
-      }, 1000);      
+      }, 500);      
     }
   );
 
