@@ -291,7 +291,15 @@ function updateExhibitorColor() {
 }
 
 function handlePanelExpandSide() {
-  $(".panel-col-title").prepend(getExpandSideScreen());
+  const panelsC = $(".panel-col-title").closest(".order-panel-C");
+  const panelsD = $(".panel-col-title").closest(".order-panel-D");
+  for (const panel of panelsC) {
+    $(panel).find(".panel-col-title").prepend(getExpandSideScreen());
+  }
+  for (const panel of panelsD) {
+    $(panel).find(".panel-col-title").prepend(getExpandSideScreen());
+  }
+
   $(".icon-expand-side").on("click", expandPanelSide);
   $(".icon-contract-side").on("click", expandPanelSide);
 
