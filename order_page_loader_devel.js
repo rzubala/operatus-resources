@@ -283,7 +283,7 @@ function reloadOpenStreetMaps() {
 
 function handleCamera() {
   $("#operatus-camera").parent().prepend(getFullCamera());
-  $(".icon-full-map").on("click", showFullCamera);
+  $(".icon-full-camera").on("click", showFullCamera);
 }
 
 function updateExhibitorColor() {
