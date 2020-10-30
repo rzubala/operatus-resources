@@ -280,6 +280,11 @@ function reloadOpenStreetMaps() {
   $(".icon-full-map").on("click", showFullMap);
 }
 
+function handleCamera() {
+  $("#operatus-camera").parent().prepend(getFullMap()); //FIXME
+  $(".icon-full-map").on("click", showFullCamera);
+}
+
 function updateExhibitorColor() {
   //$('.operatus-table-title').css('background-color', '#E0E0E0');
   const rgb = $("#coloRgb").val();
@@ -390,6 +395,18 @@ function showFullMap(event) {
     return;
   }
   const url = $(panel).find("#osm-place").attr("srcfull");
+  if (url) {
+    window.open(url, "_blank");
+  }
+}
+
+function showFullCamera(event) {
+  const icon = event.target;
+  const panel = icon.closest(".operatus-table-panel");
+  if (panel === undefined) {
+    return;
+  }
+  const url = $(panel).find("#operatus-camera").attr("srcfull");
   if (url) {
     window.open(url, "_blank");
   }
