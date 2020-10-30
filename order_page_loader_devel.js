@@ -470,6 +470,7 @@ function expandPanelFull(event) {
 
   $(panel).find(".icon-expand").toggleClass("d-lg-block");
   $(panel).find(".icon-contract").toggleClass("d-none");
+  $('.first-row-combo').toggleClass("d-none");
 }
 
 function showMoreE() {
