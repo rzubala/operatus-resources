@@ -81,13 +81,10 @@ function handleOrderedScopeTable() {
 }
 
 function handleExpandTableRows() {
-  $('.operatus-row-show-more').append(getExpandTableRows());
   $('.operatus-row-show-less').append(getContractTableRows());
-
   $(".operatus-row-to-hide").addClass("d-none");
 
-  $(".rows-more-svg").on("click", onExpandTableRows);
-  $(".show-more-label").on("click", onLabelExpandTableRows);
+  $(".operatus-show-records").on("click", onExpandTableRows);
   $(".rows-less-svg").on("click", onContractTableRows);
 }
 
