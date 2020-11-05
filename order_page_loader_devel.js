@@ -155,7 +155,6 @@ function expandTableRows(icon) {
   const dstHeight = tablePanel.height() - 10;
 
   const lessSvg = tablePanel.find("div.operatus-row-show-less");
-  $(lessSvg).toggleClass("d-none");
 
   tablePanel.css("height", srcHeight + "px");
   tablePanel.css("overflow-y", "hidden");
