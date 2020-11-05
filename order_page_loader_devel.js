@@ -153,10 +153,9 @@ function expandTableRows(icon) {
   }, 700, "swing")
 
   const dstHeight = tablePanel.height() - 10;
-  $(iconRow).toggleClass("d-none");  
 
-  const iconLess = tablePanel.find("tr.operatus-row-action-contract")
-  const lessSvg = $(iconLess).find(".operatus-row-show-less");
+  const lessSvg = tablePanel.find("div.operatus-row-show-less");
+  $(lessSvg).toggleClass("d-none");
 
   tablePanel.css("height", srcHeight + "px");
   tablePanel.css("overflow-y", "hidden");
@@ -168,7 +167,7 @@ function expandTableRows(icon) {
     "swing",
     function () {
       tablePanel.css("height", "auto");
-      $(iconLess).toggleClass("d-none");
+      $(lessSvg).toggleClass("d-none");
 
       setTimeout(function () {
         $(lessSvg).toggleClass("moved-up");
