@@ -97,7 +97,7 @@ function onContractTableRows(event) {
 
 function contractTableRows(icon) {
   const tablePanel = $(icon.closest(".operatus-table-panel"));
-  const iconRow = icon.closest("tr.operatus-row-action-contract");
+  const iconRow = icon.closest("div.operatus-row-show-less");
   const hiddenRows = tablePanel.find("tr.operatus-row-to-hide");
   
   const srcHeight = tablePanel.height();
