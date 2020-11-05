@@ -132,6 +132,12 @@ td > a > div > div {
   right: 5px;
 }
 
+.table-contract-container {
+  position: absolute;
+  top: 30px;
+  width: 100%;
+}
+
 .inner_panel {
   position: absolute;
   top: 0;
