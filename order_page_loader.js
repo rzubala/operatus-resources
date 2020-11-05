@@ -97,7 +97,7 @@ function onContractTableRows(event) {
 
 function contractTableRows(icon) {
   const tablePanel = $(icon.closest(".operatus-table-panel"));
-  const iconRow = icon.closest("tr.operatus-row-action-contract");
+  const iconRow = icon.closest("div.operatus-row-show-less");
   const hiddenRows = tablePanel.find("tr.operatus-row-to-hide");
   
   const srcHeight = tablePanel.height();
@@ -143,6 +143,7 @@ function onExpandTableRows(event) {
 function expandTableRows(icon) {
   const tablePanel = $(icon.closest(".operatus-table-panel"));
   const iconRow = icon.closest(".operatus-row-action");
+  const lessSvg = tablePanel.find("div.operatus-row-show-less");
   const hiddenRows = tablePanel.find("tr.operatus-row-to-hide");
   const srcHeight = tablePanel.height();
   hiddenRows.toggleClass("d-none");
@@ -155,9 +156,6 @@ function expandTableRows(icon) {
   const dstHeight = tablePanel.height() - 10;
   $(iconRow).toggleClass("d-none");  
 
-  const iconLess = tablePanel.find("tr.operatus-row-action-contract")
-  const lessSvg = $(iconLess).find(".operatus-row-show-less");
-
   tablePanel.css("height", srcHeight + "px");
   tablePanel.css("overflow-y", "hidden");
   tablePanel.animate(
@@ -168,7 +166,7 @@ function expandTableRows(icon) {
     "swing",
     function () {
       tablePanel.css("height", "auto");
-      $(iconLess).toggleClass("d-none");
+      $(lessSvg).toggleClass("d-none");
 
       setTimeout(function () {
         $(lessSvg).toggleClass("moved-up");
