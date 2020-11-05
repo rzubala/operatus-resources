@@ -143,6 +143,7 @@ function onExpandTableRows(event) {
 function expandTableRows(icon) {
   const tablePanel = $(icon.closest(".operatus-table-panel"));
   const iconRow = icon.closest(".operatus-row-action");
+  const lessSvg = tablePanel.find("div.operatus-row-show-less");
   const hiddenRows = tablePanel.find("tr.operatus-row-to-hide");
   const srcHeight = tablePanel.height();
   hiddenRows.toggleClass("d-none");
@@ -153,8 +154,7 @@ function expandTableRows(icon) {
   }, 700, "swing")
 
   const dstHeight = tablePanel.height() - 10;
-
-  const lessSvg = tablePanel.find("div.operatus-row-show-less");
+  $(iconRow).toggleClass("d-none");  
 
   tablePanel.css("height", srcHeight + "px");
   tablePanel.css("overflow-y", "hidden");
