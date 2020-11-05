@@ -3,15 +3,37 @@ body {
   height: 100%;
 }
 
-table > tbody > tr {
+.tr-skip-height {
+  height: auto;
+}
+
+table > tbody > tr:not(.tr-skip-height) {
   height: 30px !important;
 }
 
-table > tbody > tr > td {
+table > tbody > tr:not(.tr-skip-height) > td {
   height: 30px !important;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+table > tbody > tr > td {
+  font-size: 9pt !important;
+}
+
+.ordered-scope-table > table > tbody > tr.tr-skip-height,
+.ordered-scope-table > table > tbody > tr.tr-skip-height > td {
+  height: 28px !important;
+  font-size: 8pt !important;
+}
+
+.ordered-scope-img {
+  width: 38px;
+  height: 26px;
+}
+
+table > tbody > tr > td > span {
   font-size: 9pt !important;
 }
 
@@ -24,6 +46,23 @@ table > tbody > tr > td > div {
 
 td > a > div > div {
   line-height: 2;
+}
+
+.sub-col-title,
+.panel-col-title {
+  text-transform: uppercase;
+  background-color: #E0E0E0;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  padding-left: 12px !important;
+  border: 1px solid #d0d0d0;
+  height: 43px;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 9pt;
+  margin: 5px auto 5px auto;
 }
 
 .h-300 {
@@ -47,31 +86,56 @@ td > a > div > div {
 }
 
 .icon-expand,
+.icon-expand-2,
 .icon-expand-side,
 .icon-expand-d,
 .icon-expand-c,
-.icon-expand-e {
-  color: #505050;
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  z-index: 10;
-}
-
-.icon-expand-e-top {
-  top: 14px;
-}
-
+.icon-expand-e,
 .icon-contract,
+.icon-contract-2,
 .icon-contract-side,
 .icon-contract-d,
 .icon-contract-c,
-.icon-contract-e {
+.icon-contract-e,
+.icon-full-map,
+.icon-full-camera {
   color: #505050;
   position: absolute;
   top: 10px;
   right: 12px;
   z-index: 10;
+}
+
+.order-panel-A1 > div > table > tbody > tr > td > div,
+.order-panel-B1 > div > table > tbody > tr > td > div {
+  padding-left: 15px !important;
+}
+
+.icon-show-title,
+.icon-hide-title {
+  color: #505050;
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  z-index: 10;
+}
+
+.icon-expand-e-top,
+.operatus-expand-sub > .icon-expand,
+.operatus-expand-sub > .icon-contract {
+  top: 14px;
+}
+
+.panel-col-title > .icon-expand-side,
+.panel-col-title > .icon-contract-side {
+  top: 12px;
+  right: 5px;
+}
+
+.table-contract-container {
+  position: absolute;
+  top: 30px;
+  width: 100%;
 }
 
 .inner_panel {
@@ -154,6 +218,101 @@ td > a > div > div {
 .panelE-show-less:hover {
   opacity: 1;
   transform: scale(1);
-  transition: opacity 0.75s ease-in-out;
-  transition: transform 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+  transition: transform 0.75s ease-in-out;
+}
+
+.operatus-row-show-more-container {  
+  position: relative;
+}
+
+.show-more-label {
+  font-size: 13pt;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.moved-up {
+  transform: translateY(-10px);  
+}
+
+#loader > div > div:nth-child(1) > div > img {
+  object-fit: cover;
+  height: 20vh;
+}
+
+@media (max-width: 600px) {
+  #loader > div > div:nth-child(1) > div > img {
+    width: 90vw;
+    height: auto;
+  }  
+
+  #loader > div > div:nth-child(2) > div > div {
+    width: 90vw !important;
+  }  
+}
+
+#vessel {  
+  position: relative;
+  -webkit-animation: vesselAnimation 10s infinite  normal linear, vesselWave 2s infinite  normal linear;
+  animation: vesselAnimation 10s infinite  normal linear, vesselWave 2s infinite  normal linear;
+}
+@-webkit-keyframes vesselAnimation {
+  0% {
+      left:0px;
+  }
+  100% {
+      left: 100vw;
+  }
+}
+@-webkit-keyframes vesselWave {
+  0% {
+      top:3px;
+  }
+  50% {
+    top: 8px;
+  }
+  100% {
+    top: 3px;
+  }
+}
+
+@keyframes vesselAnimation {
+  0% {
+    left:0px;
+  }
+  100% {
+    left: 100vw;
+  }
+}
+
+@keyframes vesselWave {
+  0% {
+    top:3px;
+  }
+  50% {
+    top: 8px;
+  }
+  100% {
+    top: 3px;
+  }
+}
+
+.sea-wave {
+  background: linear-gradient(to right, #428dd4E0, #67a2da80);
+  position: relative;
+  height:10px;
+  width:100vw;
+}
+.sea-wave::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-repeat: repeat;
+  height: 10px;
+  background-size: 20px 20px;
+  background-image: radial-gradient(circle at 10px -10px, transparent 13px, #2b78c2F0 13px);
 }
