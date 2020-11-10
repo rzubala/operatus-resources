@@ -22,6 +22,15 @@
   cursor: pointer;
 }
 
+.gallery-image-min {
+  max-height: 25px;
+  width: auto;
+}
+
+.gallery-image-row {
+  display: inline;
+}
+
 .gallery-container {
   overflow-x: hidden;
 }
